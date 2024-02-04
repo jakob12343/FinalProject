@@ -11,9 +11,6 @@ const Login=async(req,res)=>{
 const PullUserDetails=async(req,res)=>{
     console.log(req.body);
 }
-const CheckUserName=async(req,res)=>{
-    res.status(200).json({ check: true});
 
-}
 
-module.exports={Read,Login,PullUserDetails,CheckUserName}
+module.exports={Read,Login,PullUserDetails}
