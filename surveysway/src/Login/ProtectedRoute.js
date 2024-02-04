@@ -6,7 +6,6 @@ import { MainContext } from '../MainContext';
 const ProtectedRoute = ({ children }) => {
     const { UserMode } = useContext(MainContext); // Accessing usertoken from context
     if (UserMode !== "UserHomePage") { // Assuming "1234" is the default or non-authenticated state
-        console.log("hallo from ProtectedRoute ");
         
 
         return <Navigate to="/" />;

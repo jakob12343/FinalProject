@@ -4,13 +4,14 @@ import { MainContext } from '../MainContext';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
-
+import './cssfiles/Form.css'
 
 function Formexampl() {
     const { SignAsGuest, SignIn } = useContext(MainContext);
-    const [Password, setPassword] = useState("")
-    const [UserName, setUserName] = useState("")
-    const [errors, setErrors] = useState([])
+    const [password, setPassword] = useState("")
+    const [username, setUserName] = useState("")
+    const [passError, setError] = useState("")
+    const [userError, setUserError]=useState("")
     const Navigate=useNavigate()
     const check = (event) => {
         event.preventDefault();
@@ -26,17 +27,26 @@ function Formexampl() {
         event.preventDefault()
         setPassword(event.target.value)
     }
-    const Submit = (event) => {
-        if (Password && UserName) {
+    const Submit =async (event) => {
+        event.preventDefault()
+        if (password && username) {
             const regex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-            const passCheck = regex.test(Password);
+            const passCheck = regex.test(password);
             if (passCheck) {
-                SignIn({ user: { Password, UserName } }).then(() => {
-                    Navigate('/UserHomePage'); // Assuming navigate is defined using useNavigate hook
-                }).catch(error => {
-                    console.error("SignIn failed:", error);
-                });
+              const inSucsses= await  SignIn({ user: { password, username } })
+              if (inSucsses) {
+                if (inSucsses==="incurrect password") {
+                    setError(inSucsses)
+  
+                }
+                else setUserError(inSucsses)
+              }
+              else{
+                Navigate('/UserHomePage'); 
+
+              }
+                
             } else {
                 console.log("Password format is incorrect");
             }
@@ -48,13 +58,25 @@ function Formexampl() {
         Navigate('/SignUp')
     }
     return (
-        <div>
-            <Form.Control onChange={GetUserName} size="lg" type="text" placeholder="User Name" />
+        <div className='form-wrapper form-group'>
+            <Form.Control   isInvalid={!!userError} // Highlight input if there's an error
+             className='form-input' onChange={GetUserName} size="lg" type="text" placeholder="User Name" />
+             {userError && (
+                                <Form.Control.Feedback className='error-message' type="invalid">
+                                    {userError}
+                                </Form.Control.Feedback>
+                            )}
             <br />
-            <Form.Control onChange={GetPassworde} size="lg" type="text" placeholder="Password" />
-            <a href="/" onClick={check}>Login as guest</a>
-            <Button onClick={Submit} variant="warning">Submit</Button>
-            <Button onClick={SignUp} variant="warning">Sign Up</Button>
+            <Form.Control isInvalid={!!passError} className='form-input' onChange={GetPassworde} size="lg" type="text" placeholder="Password" />
+            {passError && (
+                                <Form.Control.Feedback className='error-message' type="invalid">
+                                    {passError}
+                                </Form.Control.Feedback>
+                            )}
+            <a href="/"  onClick={check}>Login as guest</a>
+            
+            <Button className='form-button mb-20' onClick={Submit} >Submit</Button>
+            <Button className='form-button' onClick={SignUp} >Sign Up</Button>
 
 
         </div>

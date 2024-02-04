@@ -26,19 +26,14 @@ const MainProvider = ({ children }) => {
             setUserMode(response.data.mode)
 
         } catch (error) {
-            console.error("Error fetching user token:", error);
+            console.error("Error fetching user token:", error.response.data.message);
+            if (error.response && error.response.status === 401) {
+                return error.response.data.message
+            }
         }
 
     }
-    const CheckUserName = async (username) => {
-        const url = 'http://localhost:3000/CheckUserName';
-        try {
-            const response = await axios.get(url, username);
-            return response.data
-        } catch (error) {
-            console.error("Error fetching username", error);
-        }
-    }
+   
     const Register = async (user) => {
         try {
             const url = 'http://localhost:3000/Register';
@@ -46,7 +41,12 @@ const MainProvider = ({ children }) => {
             setusertoken(response.data.token); // Assuming the token is in response.data
             setUserMode(response.data.mode)
         } catch (error) {
-            console.error("Error fetching user token:", error);
+            console.error("Error fetching user token:", error.response.data.message);
+            if (error.response && error.response.status === 409) {
+                return true
+            }
+          
+
         }
         if (usertoken !== "1234") {
             PullUserDetails()
@@ -64,7 +64,7 @@ const MainProvider = ({ children }) => {
     useEffect(() => {
     }, [usertoken, UserMode]);
 
-    const SharedObject = { UserMode, SignAsGuest, SignIn, Register, PullUserDetails,CheckUserName };
+    const SharedObject = { UserMode, SignAsGuest, SignIn, Register, PullUserDetails };
 
     return (
         <MainContext.Provider value={SharedObject}>
