@@ -68,6 +68,7 @@ const SignIn = async (req, res) => {
         const token = jwt.sign({ userId: "guest" }, 'your-secret-key', {
             expiresIn: '1h',
         });
+        
         res.status(200).json({ token, mode: "UserHomePage" });
       }
       else res.status(401).json({message: "incurrect password"})
