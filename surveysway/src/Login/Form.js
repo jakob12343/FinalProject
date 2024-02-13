@@ -19,6 +19,10 @@ function Formexampl() {
         Navigate('/guest')
 
     };
+    const ResetPasword=(event)=>{
+        event.preventDefault();
+Navigate('/ResetPasword')
+    }
     const GetUserName = (event) => {
         event.preventDefault()
         setUserName(event.target.value)
@@ -67,13 +71,15 @@ function Formexampl() {
                                 </Form.Control.Feedback>
                             )}
             <br />
-            <Form.Control isInvalid={!!passError} className='form-input' onChange={GetPassworde} size="lg" type="text" placeholder="Password" />
+            <Form.Control isInvalid={!!passError} className='form-input' onChange={GetPassworde} size="lg" type="password" placeholder="Password" />
             {passError && (
                                 <Form.Control.Feedback className='error-message' type="invalid">
                                     {passError}
                                 </Form.Control.Feedback>
                             )}
-            <a href="/"  onClick={check}>Login as guest</a>
+            <a className='mr-1' href="/"  onClick={check}>Login as guest</a>
+            <a href="/"  onClick={ResetPasword}>Forgot Password ? </a>
+
             
             <Button className='form-button mb-20' onClick={Submit} >Submit</Button>
             <Button className='form-button' onClick={SignUp} >Sign Up</Button>
