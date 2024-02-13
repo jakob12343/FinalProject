@@ -3,7 +3,8 @@ const Survey = require('../DAL/Schemas/SurveySchema')
 const jwt = require('jsonwebtoken');
 const Validations = require('../Validations/CreateVal')
 
-
+const userTokens=[]
+const guestTokens=[]
 const Register = async (req, res) => {
     const {
         username,
@@ -38,8 +39,11 @@ const Register = async (req, res) => {
 
         }
         const isSucsses = await User.create(newdtata)
-        const token = jwt.sign({ userId: data._id }, process.env.JWT_SECRET || 'your_fallback_secret', { expiresIn: '1h' });
-        res.status(200).json({ token, mode: "UserHomePage" });
+        const token = jwt.sign({ userId: "user" }, process.env.JWT_SECRET || 'your_fallback_secret', { expiresIn: '1h' });
+        userTokens.push(token)
+        const {iat,exp}=jwt.decode(token)
+
+        res.status(200).json({ token, mode: "UserHomePage", iat,exp });
 
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -47,12 +51,49 @@ const Register = async (req, res) => {
     }
 
 }
+const GetNewToken=(req,res)=>{
+    const {usertoken}=req.body.usertoken
+    try {
+      const mode=jwt.decode(usertoken)
+      if (mode.mode==="guest") {
+        guestTokens.filter(usertoken)
+        usertoken = jwt.sign({ userId: "guest" }, 'your-secret-key', {
+            expiresIn: '1h',
+        });
+        const {iat,exp}=jwt.decode(usertoken)
+
+        guestTokens.push(usertoken)
+        res.status(200).json({ usertoken, mode: "guest", iat,exp });
+      }
+      else
+      {
+        if (mode.mode==="user") {
+            userTokens.filter(usertoken)
+            usertoken = jwt.sign({ userId: "user" }, 'your-secret-key', {
+                expiresIn: '1h',
+            });
+            const {iat,exp}=jwt.decode(usertoken)
+    
+            userTokens.push(usertoken)
+            res.status(200).json({ usertoken, mode: "guest", iat,exp });
+          }
+      }
+        
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+
+    }
+}
 const GetguestToken = async (req, res) => {
     try {
         const token = jwt.sign({ userId: "guest" }, 'your-secret-key', {
             expiresIn: '1h',
         });
-        res.status(200).json({ token, mode: "guest" });
+        
+        guestTokens.push(token)
+        const {iat,exp}=jwt.decode(token)
+
+        res.status(200).json({ token, mode: "guest", iat,exp });
 
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -65,11 +106,12 @@ const SignIn = async (req, res) => {
         if (isSucsses.length) {
             const match= await Validations.CheckPassword({pass1: isSucsses[0].password, pass2: req.body.user.password })
       if (match) {
-        const token = jwt.sign({ userId: "guest" }, 'your-secret-key', {
+        const token = jwt.sign({ userId: "user" }, 'your-secret-key', {
             expiresIn: '1h',
         });
-        
-        res.status(200).json({ token, mode: "UserHomePage" });
+        userTokens.push(token)
+        const {iat,exp}=jwt.decode(token)
+        res.status(200).json({ token, mode: "UserHomePage", iat,exp });
       }
       else res.status(401).json({message: "incurrect password"})
         }
@@ -86,4 +128,4 @@ const SignIn = async (req, res) => {
 const PublishSuervey = async (req, res) => {
     console.log('hallo from PublishSuervey');
 }
-module.exports = { Register, GetguestToken, SignIn, PublishSuervey }
+module.exports = { Register, GetguestToken, SignIn, PublishSuervey ,GetNewToken}

@@ -25,12 +25,15 @@ app.post('/Register', (req,res)=>{Create.Register(req,res)})
 app.post('/PublishSuervey', (req,res)=>{Create.PublishSuervey(req,res)})
 app.post('/GetguestToken', (req,res)=>{Create.GetguestToken(req,res)})
 app.post('/SignIn' ,(req,res)=>{Create.SignIn(req,res)})
+app.post('/GetNewToken', (req,res)=>{Create.GetNewToken(req,res)})
 // Reads
 app.get('/Login', (req,res)=>{Get.Login(req,res)})
 app.get('/PullUserDetails', (req,res)=>{Get.PullUserDetails(req,res)})
+app.get('/ForgotPassword', (req,res)=>{Get.ForgotPassword(req,res)})
 //Updates
 app.put('/UpdateDetails', (req,res)=>{Update.UpdateDetails(req,res)})
 app.put('/Vote', (req,res)=>{Update.Vote(req,res)})
+app.put('/EditPasword', (req,res)=>{Update.EditPasword(req,res)})
 //Deletes
 app.delete('/DeleteSurvey', (req,res)=>{Delete.DeleteSurvey(req,res)})
 
