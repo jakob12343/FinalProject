@@ -1,0 +1,9 @@
+.z-index{
+    z-index: 1000;
+    position: absolute;
+    top: 10%;
+    right: 37%;
+    width: 25vw;
+    height: 80vh;
+    background-color: rgba(145, 226, 172, 0.25);
+}
