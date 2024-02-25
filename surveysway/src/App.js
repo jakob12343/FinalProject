@@ -10,26 +10,35 @@ import ResetPasword from './Login/ResetPasword';
 import Newpass from './Login/Newpass';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navigator from './Navs/Navigator';
+import { UserProvider } from './UserComponents/UserContext';
+import {  GuestProvider } from './GusetComponents/GusetContext';
 
 function App() {
   return (
     <div>
-    <MainProvider>
-    <Router>
+      <MainProvider>
+        <GuestProvider>
+        <UserProvider>
+
+          <Router>
+            <Navigator />
+
             <Routes>
-                <Route path="/" element={<Login/>} />
-                <Route path="/UserHomePage" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
-                <Route path='/guest' element={<GuestPage/>} />
-                <Route path='/SignUp' element={<SignUp/>} />
-                <Route path='/ResetPasword' element={<ResetPasword/>}/>
-                <Route path='/CreateNewPassword' element={<Newpass/>}/>
+              <Route path="/" element={<Login />} />
+              <Route path="/UserHomePage" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
+              <Route path='/guest' element={<GuestPage />} />
+              <Route path='/SignUp' element={<SignUp />} />
+              <Route path='/ResetPasword' element={<ResetPasword />} />
+              <Route path='/CreateNewPassword' element={<Newpass />} />
 
-                {/* ... other routes */}
+              {/* ... other routes */}
             </Routes>
-        </Router>
+          </Router>
 
-        
-    </MainProvider>
+        </UserProvider>
+        </GuestProvider>
+      </MainProvider>
     </div>
   );
 }

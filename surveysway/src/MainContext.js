@@ -23,10 +23,13 @@ const MainProvider = ({ children }) => {
     };
     const SignIn = async (user) => {
         try {
+            console.log(user);
+
             const url = 'http://localhost:3000/SignIn';
             const response = await axios.post(url, user);
             setusertoken(response.data.token); // Assuming the token is in response.data
             setUserMode(response.data.mode)
+            setUserData(user)
 
         } catch (error) {
             console.error("Error fetching user token:", error.response.data.message);
@@ -40,7 +43,7 @@ const MainProvider = ({ children }) => {
         const url = `http://localhost:3000/ForgotPassword?username=${user.user}&phone=${user.phoneNumber}`;
         let status
         try {
-            const response = await axios.get(url)
+             await axios.get(url)
            status=200
            setUsername(user.user)
         } catch (error) {
@@ -50,7 +53,7 @@ const MainProvider = ({ children }) => {
     }
     const EditPasword = async (newPassword) => {
         const url = 'http://localhost:3000/EditPasword';
-        const response = await axios.put(url, {username:Username,newPassword});
+        await axios.put(url, {username:Username,newPassword});
 
     }
     const Register = async (user) => {
@@ -82,10 +85,12 @@ const MainProvider = ({ children }) => {
     }
     useEffect(() => {
         ValidateToken(exp, usertoken, setusertoken, setExp)
-    }, [usertoken, UserMode]);
+    }, [usertoken, UserMode,exp]);
 
     const SharedObject = {
         UserMode,
+        UserData,
+        usertoken,
         SignAsGuest,
         SignIn,
         Register,

@@ -9,7 +9,7 @@ const ResetPasswordForm = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [error, setError] = useState("");
   const { ForgotPassword } = useContext(MainContext);
-  const navigate = useNavigate();
+  const navigate  = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();

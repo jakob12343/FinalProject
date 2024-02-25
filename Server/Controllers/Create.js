@@ -2,9 +2,8 @@ const User = require('../DAL/Schemas/UserSchema')
 const Survey = require('../DAL/Schemas/SurveySchema')
 const jwt = require('jsonwebtoken');
 const Validations = require('../Validations/CreateVal')
+const tokens = require('./Localfiles/Tokens')
 
-const userTokens=[]
-const guestTokens=[]
 const Register = async (req, res) => {
     const {
         username,
@@ -33,17 +32,17 @@ const Register = async (req, res) => {
     }
     try {
         const newdtata = await Validations.EncrypPassword(data)
-        const isExist=  await User.find({username: data.username})
+        const isExist = await User.find({ username: data.username })
         if (isExist.length) {
             return res.status(409).json({ message: "Username already exists." });
 
         }
         const isSucsses = await User.create(newdtata)
         const token = jwt.sign({ userId: "user" }, process.env.JWT_SECRET || 'your_fallback_secret', { expiresIn: '1h' });
-        userTokens.push(token)
-        const {iat,exp}=jwt.decode(token)
+        tokens.userTokens.push(token)
+        const { iat, exp } = jwt.decode(token)
 
-        res.status(200).json({ token, mode: "UserHomePage", iat,exp });
+        res.status(200).json({ token, mode: "UserHomePage", iat, exp });
 
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -51,34 +50,33 @@ const Register = async (req, res) => {
     }
 
 }
-const GetNewToken=(req,res)=>{
-    const {usertoken}=req.body.usertoken
+const GetNewToken = (req, res) => {
+    const { usertoken } = req.body.usertoken
     try {
-      const mode=jwt.decode(usertoken)
-      if (mode.mode==="guest") {
-        guestTokens.filter(usertoken)
-        usertoken = jwt.sign({ userId: "guest" }, 'your-secret-key', {
-            expiresIn: '1h',
-        });
-        const {iat,exp}=jwt.decode(usertoken)
-
-        guestTokens.push(usertoken)
-        res.status(200).json({ usertoken, mode: "guest", iat,exp });
-      }
-      else
-      {
-        if (mode.mode==="user") {
-            userTokens.filter(usertoken)
-            usertoken = jwt.sign({ userId: "user" }, 'your-secret-key', {
+        const mode = jwt.decode(usertoken)
+        if (mode.mode === "guest") {
+            tokens.guestTokens.filter(usertoken)
+            usertoken = jwt.sign({ userId: "guest" }, 'your-secret-key', {
                 expiresIn: '1h',
             });
-            const {iat,exp}=jwt.decode(usertoken)
-    
-            userTokens.push(usertoken)
-            res.status(200).json({ usertoken, mode: "guest", iat,exp });
-          }
-      }
-        
+            const { iat, exp } = jwt.decode(usertoken)
+
+            tokens.guestTokens.push(usertoken)
+            res.status(200).json({ usertoken, mode: "guest", iat, exp });
+        }
+        else {
+            if (mode.mode === "user") {
+                userTokens.filter(usertoken)
+                tokens.usertoken = jwt.sign({ userId: "user" }, 'your-secret-key', {
+                    expiresIn: '1h',
+                });
+                const { iat, exp } = jwt.decode(usertoken)
+
+                tokens.userTokens.push(usertoken)
+                res.status(200).json({ usertoken, mode: "guest", iat, exp });
+            }
+        }
+
     } catch (error) {
         res.status(400).json({ message: error.message });
 
@@ -89,11 +87,11 @@ const GetguestToken = async (req, res) => {
         const token = jwt.sign({ userId: "guest" }, 'your-secret-key', {
             expiresIn: '1h',
         });
-        
-        guestTokens.push(token)
-        const {iat,exp}=jwt.decode(token)
 
-        res.status(200).json({ token, mode: "guest", iat,exp });
+        tokens.guestTokens.push(token)
+        const { iat, exp } = jwt.decode(token)
+
+        res.status(200).json({ token, mode: "guest", iat, exp });
 
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -102,23 +100,23 @@ const GetguestToken = async (req, res) => {
 }
 const SignIn = async (req, res) => {
     try {
-        const isSucsses = await User.find({username: req.body.user.username})
+        const isSucsses = await User.find({ username: req.body.user.username })
         if (isSucsses.length) {
-            const match= await Validations.CheckPassword({pass1: isSucsses[0].password, pass2: req.body.user.password })
-      if (match) {
-        const token = jwt.sign({ userId: "user" }, 'your-secret-key', {
-            expiresIn: '1h',
-        });
-        userTokens.push(token)
-        const {iat,exp}=jwt.decode(token)
-        res.status(200).json({ token, mode: "UserHomePage", iat,exp });
-      }
-      else res.status(401).json({message: "incurrect password"})
+            const match = await Validations.CheckPassword({ pass1: isSucsses[0].password, pass2: req.body.user.password })
+            if (match) {
+                const token = jwt.sign({ userId: "user" }, 'your-secret-key', {
+                    expiresIn: '1h',
+                });
+                tokens.userTokens.push(token)
+                const { iat, exp } = jwt.decode(token)
+                res.status(200).json({ token, mode: "UserHomePage", iat, exp });
+            }
+            else res.status(401).json({ message: "incurrect password" })
         }
-        else res.status(401).json({message: "cannot find user name"})
-      
+        else res.status(401).json({ message: "cannot find user name" })
 
-       
+
+
 
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -128,4 +126,4 @@ const SignIn = async (req, res) => {
 const PublishSuervey = async (req, res) => {
     console.log('hallo from PublishSuervey');
 }
-module.exports = { Register, GetguestToken, SignIn, PublishSuervey ,GetNewToken}
+module.exports = { Register, GetguestToken, SignIn, PublishSuervey, GetNewToken }

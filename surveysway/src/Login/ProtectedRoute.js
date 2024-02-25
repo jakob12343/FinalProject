@@ -6,11 +6,14 @@ import { MainContext } from '../MainContext';
 const ProtectedRoute = ({ children }) => {
     const { UserMode } = useContext(MainContext); // Accessing usertoken from context
     if (UserMode !== "UserHomePage") { // Assuming "1234" is the default or non-authenticated state
-        
+        if (UserMode==="guest") {
+        return <Navigate to="/guest"/>
+        }
 
         return <Navigate to="/" />;
 
     }
+    
     
     return children;
 };

@@ -1,0 +1,101 @@
+/* Enhancements for homepage.css */
+
+/* Use CSS variables for easier theme management */
+:root {
+    --primary-color: #007bff; /* Primary color for interactive elements */
+    --hover-color: #0056b3; /* Darker shade for hover states */
+    --active-color: #004094; /* Even darker shade for active states */
+    --background-color: #f8f9fa; /* Light background color */
+    --text-color: #495057; /* Default text color */
+    --text-hover-color: #ffffff; /* Text color for hover states */
+}
+
+/* Apply general styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Styling the container for a more modern look */
+#left-tabs-example {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    background-color: var(--background-color);
+}
+
+/* Customizing tabs for a more dynamic interaction */
+.nav-pills .nav-link {
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-color);
+    border-radius: 0.5rem;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: var(--hover-color);
+    color: var(--text-hover-color);
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--text-hover-color);
+}
+
+/* Content area enhancements */
+.tab-content {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+    width: 100%;
+    max-width: 800px; /* Adjust based on your layout's needs */
+    padding: 20px;
+}
+
+/* Hover and focus effects for inputs and buttons within tab content */
+.tab-content input[type="text"], .tab-content input[type="password"], .tab-content button {
+    transition: all 0.3s ease-in-out;
+}
+
+.tab-content input[type="text"]:hover, .tab-content input[type="password"]:hover, .tab-content button:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tab-content input[type="text"]:focus, .tab-content input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
+
+.tab-content button {
+    background-color: var(--primary-color);
+    color: var(--text-hover-color);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.tab-content button:focus {
+    outline: none;
+    background-color: var(--active-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    #left-tabs-example {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-pills {
+        margin-bottom: 20px;
+    }
+
+    .tab-content {
+        margin-left: 0;
+        max-width: 100%;
+    }
+}
