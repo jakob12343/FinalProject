@@ -1,5 +1,6 @@
 const User = require('../DAL/Schemas/UserSchema')
 const Survey = require('../DAL/Schemas/SurveySchema')
+const Validations = require('../Validations/CreateVal')
 
 const Read = async (req, res) => {
 
@@ -9,6 +10,16 @@ const Login = async (req, res) => {
     console.log("login sucsses");
 }
 const PullUserDetails = async (req, res) => {
+    const {Username,usertoken}=req.query
+   const IsExist=await Validations.CheckUser(usertoken)
+   if (IsExist) {
+    try {
+        const data=await User.findOne({username:Username})
+        res.status(200).json(data)
+    } catch (error) {
+        res.status(500).json({error})
+    }
+   }
 }
 const ForgotPassword = async (req, res) => {
     const { username, phone } = req.query
