@@ -6,6 +6,8 @@ import Tab from 'react-bootstrap/Tab';
 import UserDetails from './UserDetails';
 import { UserContext } from './UserContext';
 import './CssFiles/HomePage.css'
+import { Surveys } from './Surveys';
+import PublishSurvey from './PublishSurvey';
 const Homepage = () => {
   const {PullUserDetails,Data}=useContext(UserContext)
  useEffect(()=>{
@@ -21,7 +23,10 @@ PullUserDetails()
             <Nav.Link eventKey="first">User Details</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="second">Tab 2</Nav.Link>
+            <Nav.Link eventKey="second">Publish Survey</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="third">Surveys Managments</Nav.Link>
           </Nav.Item>
         </Nav>
       </Col>
@@ -30,7 +35,12 @@ PullUserDetails()
           <Tab.Pane eventKey="first">
             <UserDetails className="user-details" data={Data}/>
           </Tab.Pane>
-          <Tab.Pane eventKey="second">Second tab content</Tab.Pane>
+          <Tab.Pane eventKey="second">
+            <PublishSurvey/>
+          </Tab.Pane>
+          <Tab.Pane eventKey="third">
+            <Surveys/>
+          </Tab.Pane>
         </Tab.Content>
       </Col>
     </Row>

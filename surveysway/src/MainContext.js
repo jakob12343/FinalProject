@@ -23,7 +23,6 @@ const MainProvider = ({ children }) => {
     };
     const SignIn = async (user) => {
         try {
-            console.log(user);
 
             const url = 'http://localhost:3000/SignIn';
             const response = await axios.post(url, user);

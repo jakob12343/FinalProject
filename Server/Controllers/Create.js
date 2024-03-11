@@ -124,6 +124,19 @@ const SignIn = async (req, res) => {
     }
 }
 const PublishSuervey = async (req, res) => {
-    console.log('hallo from PublishSuervey');
+    const {survey,Data}=req.body
+    const newSurvey ={
+        author: Data._id,
+        title: survey.title,
+        category: survey.category,
+        questions: survey.question,
+        duration: survey.duration,
+        isPublic: survey.isPublic,
+        targetAudience: survey.targetAudience,
+        purpose: survey.purpose,
+        
+    }
+    const IsSucsses=await Survey.create(newSurvey)
+    res.status(200).json({status: " ok"})
 }
 module.exports = { Register, GetguestToken, SignIn, PublishSuervey, GetNewToken }
