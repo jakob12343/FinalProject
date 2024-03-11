@@ -1,25 +1,23 @@
 const User = require('../DAL/Schemas/UserSchema')
 const Survey = require('../DAL/Schemas/SurveySchema')
+const NonActive = require('../DAL/Schemas/NonActive')
 const Validations = require('../Validations/CreateVal')
 
-const Read = async (req, res) => {
 
-
-}
 const Login = async (req, res) => {
     console.log("login sucsses");
 }
 const PullUserDetails = async (req, res) => {
-    const {Username,usertoken}=req.query
-   const IsExist=await Validations.CheckUser(usertoken)
-   if (IsExist) {
-    try {
-        const data=await User.findOne({username:Username})
-        res.status(200).json(data)
-    } catch (error) {
-        res.status(500).json({error})
+    const { Username, usertoken } = req.query
+    const IsExist = await Validations.CheckUser(usertoken)
+    if (IsExist) {
+        try {
+            const data = await User.findOne({ username: Username })
+            res.status(200).json(data)
+        } catch (error) {
+            res.status(500).json({ error })
+        }
     }
-   }
 }
 const ForgotPassword = async (req, res) => {
     const { username, phone } = req.query
@@ -40,6 +38,42 @@ const ForgotPassword = async (req, res) => {
     }
 
 }
+const PullAllSurveys = async (req, res) => {
+    const { Username, usertoken } = req.query
+    const IsExist = await Validations.CheckUser(usertoken)
+    if (IsExist) {
+
+        const data = await User.findOne({ username: Username })
+        const excludeAuthorId = data._id
+        const surveys = await Survey.find({ author: { $ne: excludeAuthorId } })
+        surveys.forEach(el=>el.author=data.username)
+        console.log( surveys.author);
+        res.status(200).json(surveys)
+    }
+    else res.status(409).json({ message: "invalid user token" })
+}
+const PullUserSurveys = async (req, res) => {
+    const { Username, usertoken } = req.query
+    const IsExist = await Validations.CheckUser(usertoken)
+    if (IsExist) {
+        const data = await User.findOne({ username: Username })
+        const surveys = await Survey.find({ author: data._id })
+        res.status(200).json(surveys)
+    }
+    else res.status(409).json({ message: "invalid user token" })
 
 
-module.exports = { Read, Login, PullUserDetails, ForgotPassword }
+}
+const PullOldUserSurveys = async (req, res) => {
+    const { Username, usertoken } = req.query
+    const IsExist = await Validations.CheckUser(usertoken)
+    if (IsExist) {
+        const data = await User.findOne({ username: Username })
+        const surveys = await NonActive.find({ author: data._id })
+        res.status(200).json(surveys)
+    }
+    else res.status(409).json({ message: "invalid user token" })
+}
+
+
+module.exports = { Login, PullUserDetails, ForgotPassword, PullUserSurveys, PullOldUserSurveys, PullAllSurveys }

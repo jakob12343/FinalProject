@@ -21,7 +21,8 @@ const SignUp = () => {
         maritalStatus: '',
         countryOfOrigin: '',
     });
-
+    const Genders = ["Male", "Woman", "Undefined"]
+    const PersonalStatus = ["Singel", "Married", "Divorced", "Widow", "Undefined"]
     const handleChange = (e) => {
         const { name, value } = e.target;
         // Reset username error when user starts typing again
@@ -109,7 +110,7 @@ const SignUp = () => {
                         <Form.Group className="mb-3" controlId="formBasicBirthDate">
                             <Form.Label>Birth Date</Form.Label>
                             <Form.Control
-                            
+
                                 className='form-input '
 
                                 type="date"
@@ -134,16 +135,21 @@ const SignUp = () => {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicGender">
                             <Form.Label>Gender</Form.Label>
-                            <Form.Control
-                                className='form-input'
-
-                                type="text"
-                                placeholder="Gender"
-                                name="gender"
+                            <Form.Select
                                 value={formData.gender}
                                 onChange={handleChange}
-                            />
+                                name="gender"
+
+                            >
+                                <option value="">Select category</option>
+                                {Genders.map((el) => (
+                                    <option key={el} value={el}>
+                                        {el}
+                                    </option>
+                                ))}
+                            </Form.Select>
                         </Form.Group>
+
                         <Form.Group className="mb-3" controlId="formBasicReligion">
                             <Form.Label>Religion</Form.Label>
                             <Form.Control
@@ -170,15 +176,20 @@ const SignUp = () => {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicMaritalStatus">
                             <Form.Label>Marital Status</Form.Label>
-                            <Form.Control
-                                className='form-input'
-
-                                type="text"
-                                placeholder="Marital Status"
-                                name="maritalStatus"
+                            
+                              <Form.Select
                                 value={formData.maritalStatus}
                                 onChange={handleChange}
-                            />
+                                name="maritalStatus"
+
+                            >
+                                <option value="">Select category</option>
+                                {PersonalStatus.map((el) => (
+                                    <option key={el} value={el}>
+                                        {el}
+                                    </option>
+                                ))}
+                            </Form.Select>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicCountryOfOrigin">

@@ -6,8 +6,12 @@ const Update=async(req,res)=>{
    
    
 }
-const UpdateDetails=async(req,res)=>{
-    console.log("hallo from updates");
+const UpdateUserDetails=async(req,res)=>{
+    const IsExist=await Validations.CheckUser(req.query)
+    if (IsExist) {
+        const data=await User.findByIdAndUpdate(req.body._id, req.body)
+    }
+    res.status(200).json({status: "ok"})
 }
 const EditPasword=async(req,res)=>{
 const {newPassword, username}=req.body
@@ -24,4 +28,4 @@ res.status(200).json({mssege: "password updated"})
 const Vote=async(req,res)=>{
     console.log("hallo from Vote");
 }
-module.exports={Update,UpdateDetails,Vote,EditPasword}
+module.exports={Update,UpdateUserDetails,Vote,EditPasword}
