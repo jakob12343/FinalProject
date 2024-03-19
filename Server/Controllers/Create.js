@@ -3,6 +3,7 @@ const Survey = require('../DAL/Schemas/SurveySchema')
 const jwt = require('jsonwebtoken');
 const Validations = require('../Validations/CreateVal')
 const tokens = require('./Localfiles/Tokens')
+const NonActive = require('../DAL/Schemas/NonActive')
 
 const Register = async (req, res) => {
     const {
@@ -38,11 +39,21 @@ const Register = async (req, res) => {
 
         }
         const isSucsses = await User.create(newdtata)
+        const surveys = await Survey.find({ author: isSucsses._id })
+        const OldSurveys = await NonActive.find({ author: isSucsses._id })
+        const Allsurveys = await Survey.find({ author: { $ne: isSucsses._id } })
+        const SharedObject =
+        {
+            user: isSucsses,
+            OldSurveys,
+            Allsurveys,
+            surveys
+        }
         const token = jwt.sign({ userId: "user" }, process.env.JWT_SECRET || 'your_fallback_secret', { expiresIn: '1h' });
         tokens.userTokens.push(token)
         const { iat, exp } = jwt.decode(token)
 
-        res.status(200).json({ token, mode: "UserHomePage", iat, exp });
+        res.status(200).json({ token, mode: "UserHomePage", iat, exp,userdetails: SharedObject });
 
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -99,17 +110,35 @@ const GetguestToken = async (req, res) => {
     }
 }
 const SignIn = async (req, res) => {
+
     try {
-        const isSucsses = await User.find({ username: req.body.user.username })
-        if (isSucsses.length) {
-            const match = await Validations.CheckPassword({ pass1: isSucsses[0].password, pass2: req.body.user.password })
+        const isSucsses = await User.findOne({ username: req.body.username })
+
+        if (isSucsses) {
+            const match = await Validations.CheckPassword({ pass1: isSucsses.password, pass2: req.body.password })
             if (match) {
                 const token = jwt.sign({ userId: "user" }, 'your-secret-key', {
                     expiresIn: '1h',
                 });
+                const surveys = await Survey.find({ author: isSucsses._id })
+                const OldSurveys = await NonActive.find({ author: isSucsses._id })
+                const Allsurveys = await Survey.find({ author: { $ne: isSucsses._id } })
+                const SharedObject =
+                {
+                    user: isSucsses,
+                    OldSurveys,
+                    Allsurveys,
+                    surveys
+                }
                 tokens.userTokens.push(token)
                 const { iat, exp } = jwt.decode(token)
-                res.status(200).json({ token, mode: "UserHomePage", iat, exp });
+                res.status(200).json({
+                    token,
+                    mode: "UserHomePage",
+                    iat,
+                    exp,
+                    userdetails: SharedObject
+                });
             }
             else res.status(401).json({ message: "incurrect password" })
         }
@@ -124,8 +153,8 @@ const SignIn = async (req, res) => {
     }
 }
 const PublishSuervey = async (req, res) => {
-    const {survey,Data}=req.body
-    const newSurvey ={
+    const { survey, Data } = req.body
+    const newSurvey = {
         author: Data._id,
         title: survey.title,
         category: survey.category,
@@ -134,9 +163,9 @@ const PublishSuervey = async (req, res) => {
         isPublic: survey.isPublic,
         targetAudience: survey.targetAudience,
         purpose: survey.purpose,
-        
+
     }
-    const IsSucsses=await Survey.create(newSurvey)
-    res.status(200).json({status: " ok"})
+    const IsSucsses = await Survey.create(newSurvey)
+    res.status(200).json({ status: " ok" })
 }
 module.exports = { Register, GetguestToken, SignIn, PublishSuervey, GetNewToken }

@@ -14,7 +14,7 @@ const Survey= new mongoose.Schema(
         purpose: String,
         responses: [{
           user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-          answers: [{ type: String }]
+          option: { type: Number}
       
           }]
         }

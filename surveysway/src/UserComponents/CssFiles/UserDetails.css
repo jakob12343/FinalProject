@@ -2,3 +2,111 @@
     max-height: 25vh;
     max-width: 20vh;
 }
+/* LinkedIn-style theme for User Details component */
+
+/* Using a LinkedIn-like color palette */
+:root {
+    --primary-color: #0077b5; /* LinkedIn blue */
+    --text-color: #293e49; /* LinkedIn's darker text color */
+    --background-light: #f4f6f8; /* A light grey background similar to LinkedIn's */
+    --border-color: #dce0e6; /* Soft border color */
+    --link-color: #0077b5; /* Same as primary for links */
+    --link-hover-color: #005e93; /* Darker blue for hover states */
+}
+
+/* General styles */
+.UserDetails {
+    font-family: Arial, sans-serif; /* LinkedIn uses sans-serif fonts */
+    color: var(--text-color);
+}
+
+/* Card styles */
+.Card {
+    border: 1px solid var(--border-color); /* Solid border with LinkedIn color */
+    border-radius: 8px; /* LinkedIn uses rounded borders for cards */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    overflow: hidden; /* Ensures nothing spills out */
+}
+
+.Card .Img {
+    height: auto;
+    width: 100%; /* Full width */
+    object-fit: cover; /* Cover the area nicely */
+}
+
+.Card .Card-Body {
+    padding: 16px; /* LinkedIn-like padding for inner spacing */
+    background-color: var(--background-light); /* Light background for the content */
+}
+
+.Card .Card-Title {
+    font-size: 20px; /* Prominent font size for titles */
+    margin-bottom: 8px; /* Space below the title */
+    color: var(--text-color);
+}
+
+/* Form input styles */
+.Card .form-input {
+    width: 100%; /* Full width */
+    padding: 10px; /* Comfortable padding */
+    margin: 8px 0; /* Margin for spacing */
+    border: 1px solid var(--border-color); /* Consistent border styling */
+    border-radius: 4px; /* Slight rounding of corners */
+    box-sizing: border-box; /* Keeps padding inside */
+}
+
+/* Button styles */
+.Card Button {
+    background-color: var(--primary-color); /* LinkedIn blue for primary buttons */
+    color: white; /* White text on buttons */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding for size */
+    margin-top: 10px; /* Margin on top for spacing */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Cursor for clickability */
+}
+
+.Card Button:hover {
+    background-color: var(--link-hover-color); /* Darker on hover */
+}
+
+/* Icon styles */
+.Card .FontAwesomeIcon {
+    color: var(--link-color); /* Icon color */
+    margin-left: 10px; /* Spacing to the left */
+    cursor: pointer; /* Cursor for clickability */
+}
+
+.Card .FontAwesomeIcon:hover {
+    color: var(--link-hover-color); /* Darker on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .Card .Card-Body {
+        padding: 12px; /* Slightly less padding on smaller screens */
+    }
+
+    .Card .Card-Title {
+        font-size: 18px; /* Slightly smaller font size on smaller screens */
+    }
+}
+
+/* Adding LinkedIn-like form interaction effects */
+.Card .form-input:focus {
+    border-color: var(--primary-color); /* Blue border on focus */
+    box-shadow: 0 0 0 2px rgba(0, 119, 181, 0.25); /* Glow effect */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Error message styling */
+.error-message {
+    color: #d9534f; /* LinkedIn uses standard red for error messages */
+    background-color: #ffe9e9; /* Soft background for error message */
+    border-color: #d9534f; /* Matching border color for error */
+    border-radius: 4px; /* Rounded corners */
+    padding: .75rem; /* Adequate padding */
+    margin-top: -1rem; /* Position it above the input field */
+    margin-bottom: 1rem; /* Space below the message */
+    text-align: center; /* Center align text */
+}

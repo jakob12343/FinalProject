@@ -38,7 +38,8 @@ const SignUp = () => {
         const regex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
         const passCheck = regex.test(formData.password);
         if (passCheck) {
-            const isSucsses = await Register(formData);
+          const user={username: formData.username, password: formData.password }
+            const isSucsses = await Register(formData,user );
             if (isSucsses) {
                 // Assuming isSucsses being false means username exists
                 setUsernameError("Username already exists. Please choose another one.");

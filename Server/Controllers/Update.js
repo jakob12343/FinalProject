@@ -26,6 +26,10 @@ res.status(200).json({mssege: "password updated"})
 
 }
 const Vote=async(req,res)=>{
-    console.log("hallo from Vote");
+    const IsExist=await Validations.CheckUser(req.query)
+    if (IsExist) {
+        const data=await Survey.findByIdAndUpdate(req.body._id, req.body)
+    }
+    res.status(200).json({status: "ok"})    
 }
 module.exports={Update,UpdateUserDetails,Vote,EditPasword}

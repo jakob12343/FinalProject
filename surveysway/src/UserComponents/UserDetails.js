@@ -7,7 +7,6 @@ import './CssFiles/UserDetails.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UserContext } from './UserContext';
 const UserDetails = ({ data }) => {
-  const IMAGE = data.image
 
   const [isAdressEditing, setisAdressEditing] = useState(false)
   const [isBirthDateEditing, setisBirthDateEditing] = useState(false)
@@ -19,6 +18,7 @@ const UserDetails = ({ data }) => {
 
   useEffect(() => {
     setFormData(data)
+
 
   }, [data])
   const handleChange = (e) => {
@@ -64,7 +64,7 @@ const UserDetails = ({ data }) => {
   return (
 
     <Card >
-      <Card.Img className='Img' variant="top" src={IMAGE || useplaceholder} />
+      <Card.Img className='Img' variant="top" src={ useplaceholder} />
       <Card.Body>
 
         <Card.Title>Username: {formData.username}</Card.Title>

@@ -1,89 +1,142 @@
-/* Enhancements for homepage.css */
+/* Enhanced LinkedIn-style theme for homepage */
 
-/* Use CSS variables for easier theme management */
 :root {
-    --primary-color: #007bff; /* Primary color for interactive elements */
-    --hover-color: #0056b3; /* Darker shade for hover states */
-    --active-color: #004094; /* Even darker shade for active states */
-    --background-color: #f8f9fa; /* Light background color */
-    --text-color: #495057; /* Default text color */
-    --text-hover-color: #ffffff; /* Text color for hover states */
+    /* LinkedIn color scheme variables */
+    --primary-color: #0077b5; /* LinkedIn blue for primary actions */
+    --hover-primary-color: #005e93; /* Darker blue for hover states */
+    --secondary-color: #f3f2ef; /* Light grey used for backgrounds */
+    --border-color: #ced4da; /* Grey for borders and lines */
+    --text-color: #333333; /* Dark grey for text */
+    --text-muted-color: #666666; /* Muted text color for less emphasis */
+    --error-color: #d9534f; /* Red for error messages */
+    --box-shadow: 0 4px 6px 0 rgba(0,0,0,0.2); /* Box shadow for depth */
 }
 
-/* Apply general styles */
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 16px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
 
-/* Styling the container for a more modern look */
 #left-tabs-example {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 40px 20px;
-    background-color: var(--background-color);
+    gap: 2rem; /* Increased gap between items */
+    padding: 2rem;
+    background-color: var(--secondary-color);
 }
 
-/* Customizing tabs for a more dynamic interaction */
 .nav-pills .nav-link {
-    transition: background-color 0.3s, color 0.3s;
+    border: 1px solid var(--border-color);
     color: var(--text-color);
-    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
 }
 
-.nav-pills .nav-link:hover {
-    background-color: var(--hover-color);
-    color: var(--text-hover-color);
+.nav-pills .nav-link:hover, .nav-pills .nav-link:focus {
+    border-color: var(--hover-primary-color);
+    background-color: var(--hover-primary-color);
+    color: white;
+    transform: translateY(-2px); /* Subtle lift effect */
 }
 
 .nav-pills .nav-link.active {
     background-color: var(--primary-color);
-    color: var(--text-hover-color);
-}
-
-/* Content area enhancements */
-.tab-content {
-    background-color: #fff;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 20px;
-    width: 100%;
-    max-width: 800px; /* Adjust based on your layout's needs */
-    padding: 20px;
-}
-
-/* Hover and focus effects for inputs and buttons within tab content */
-.tab-content input[type="text"], .tab-content input[type="password"], .tab-content button {
-    transition: all 0.3s ease-in-out;
-}
-
-.tab-content input[type="text"]:hover, .tab-content input[type="password"]:hover, .tab-content button:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.tab-content input[type="text"]:focus, .tab-content input[type="password"]:focus {
-    outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+    color: white;
+}
+
+.tab-content {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px;
 }
 
 .tab-content button {
     background-color: var(--primary-color);
-    color: var(--text-hover-color);
     border: none;
-    padding: 10px 15px;
-    border-radius: 0.25rem;
+    border-radius: 4px;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.tab-content button:focus {
-    outline: none;
-    background-color: var(--active-color);
+.tab-content button:hover {
+    background-color: var(--hover-primary-color);
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+/* Additional styling for Tab.Pane within the LinkedIn-style theme */
+
+.tab-content .tab-pane {
+    margin-top: 0.5rem;
+    padding: 1rem; /* Consistent padding around the content of the pane */
+    border-radius: 4px; /* Match the border-radius of the tab-content container */
+    background-color: white; /* Ensure a clean, white background */
+    box-shadow: var(--box-shadow); /* Utilize the same shadow for depth */
+    margin-top: 1rem; /* Space above the pane for clear separation from tabs */
 }
 
-/* Responsive adjustments */
+.tab-content .tab-pane h2, .tab-content .tab-pane h3 {
+    color: var(--primary-color); /* Use LinkedIn blue for heading colors */
+    margin-top: 0.5rem; /* Top margin for heading spacing */
+    margin-bottom: 1rem; /* Bottom margin for heading spacing */
+}
+
+.tab-content .tab-pane p {
+    color: var(--text-color); /* Standard text color for readability */
+    line-height: 1.6; /* Improved line height for readability */
+    margin-bottom: 1rem; /* Space below paragraphs for better flow */
+}
+
+.tab-content .tab-pane .btn {
+    background-color: var(--primary-color); /* Consistent button color */
+    border: none; /* No border for a cleaner look */
+    padding: 0.5rem 1rem; /* Adequate padding for clickability */
+    margin-top: 0.5rem; /* Margin above buttons for spacing */
+    border-radius: 4px; /* Rounded corners for buttons */
+    color: white; /* Text color for contrast */
+    transition: background-color 0.2s, transform 0.2s; /* Smooth transitions for interaction */
+}
+
+.tab-content .tab-pane .btn:hover {
+    background-color: var(--hover-primary-color); /* Darker on hover for feedback */
+    transform: scale(1.05); /* Slight increase in size for emphasis */
+}
+
+.tab-content .tab-pane .btn:active {
+    transform: scale(0.95); /* Slight decrease in size on click for feedback */
+}
+
+.tab-content .tab-pane .form-control {
+    border: 1px solid var(--border-color); /* Consistent border styling */
+    border-radius: 4px; /* Rounded corners for form controls */
+    margin-bottom: 1rem; /* Space below form controls */
+}
+
+.tab-content .tab-pane .form-control:focus {
+    border-color: var(--primary-color); /* Highlight color on focus */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Glow effect for focus */
+}
+
+/* Ensure the accordion or any list within Tab.Pane aligns nicely */
+.tab-content .tab-pane .list-group-item {
+    border-color: var(--border-color); /* Consistent list item borders */
+    margin-bottom: 0.5rem; /* Space between list items */
+    border-radius: 4px; /* Rounded corners for list items */
+}
+
+
 @media (max-width: 992px) {
     #left-tabs-example {
         flex-direction: column;
@@ -91,11 +144,21 @@ body, html {
     }
 
     .nav-pills {
-        margin-bottom: 20px;
+        justify-content: center; /* Center the pills on smaller screens */
+        margin-bottom: 1rem;
     }
 
     .tab-content {
-        margin-left: 0;
-        max-width: 100%;
+        margin-top: 1rem;
     }
+}
+
+.error-message {
+    color: var(--error-color);
+    background-color: #ffe9e9;
+    border-color: var(--error-color);
+    border-radius: 4px;
+    padding: 0.75rem 1.25rem;
+    margin: 1rem 0; /* Added margin for spacing */
+    text-align: center;
 }

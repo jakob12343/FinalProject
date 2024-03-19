@@ -17,12 +17,17 @@ app.use(express.json())
 app.use(cors())
 // activate DB
 DataBase();
+// create websocket
+
 
 //////////////// CRUD////////////////
 
 // Posts
 app.post('/Register', (req,res)=>{Create.Register(req,res)})
-app.post('/PublishSuervey', (req,res)=>{Create.PublishSuervey(req,res)})
+app.post('/PublishSuervey', (req,res)=>{
+    Create.PublishSuervey(req,res);
+   
+})
 app.post('/GetguestToken', (req,res)=>{Create.GetguestToken(req,res)})
 app.post('/SignIn' ,(req,res)=>{Create.SignIn(req,res)})
 app.post('/GetNewToken', (req,res)=>{Create.GetNewToken(req,res)})

@@ -4,42 +4,37 @@ import { Card } from 'react-bootstrap'
 import { UserContext } from './UserContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
-
+import './CssFiles/NonActive.css'
 const NonActive = () => {
-    const { PullOldUserSurveys, OldSrveys } = useContext(UserContext)
-    useEffect(() => {
-        PullOldUserSurveys()
-        // eslint-disable-next-line
-    }, [])
+    const {  OldSrveys} = useContext(UserContext)
+   
     useEffect(() => {
         // eslint-disable-next-line
     }, [OldSrveys])
     const drawAnswer = (item, i) => {
-        return <Card.Text key={i}>
+        return <div key={i}>
             Answer Number {i + 1}: {item}
-        </Card.Text>
+        </div>
     }
 
     return (
         <div>
             {OldSrveys.map((survey, index) => (
                 <div key={index}>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Title>{survey.purpose}</Card.Title>
-                            <Card.Title>{survey.title}</Card.Title>
-                            <Card.Text>
+                    <Card className='Card' style={{ width: '18rem' }}>
+                        <Card.Body className='Card-Body'>
+                            <Card.Title className='Card-Title'>{survey.purpose}</Card.Title>
+                            <Card.Title className='Card-Title'>{survey.title}</Card.Title>
+                            <div className='Card-Tex'>
                                 question: {survey.questions[0].text}
-                            </Card.Text>
+                            </div>
                             answers : {survey.questions[0].options.map((item, i) => drawAnswer(item, i))}
-                            <Card.Text>
+                            <div className='Card-Tex'>
                                 Public? : {survey.isPublic && <FontAwesomeIcon icon={faCheck} style={{ marginLeft: '10px', cursor: 'pointer' }} />}
                                 {!survey.isPublic && <FontAwesomeIcon icon={faXmark} style={{ marginLeft: '10px', cursor: 'pointer' }} />}
-                                <Card.Text>
-                            </Card.Text>
+                            </div>
                             This Poll Is Closed
 
-                            </Card.Text>
                         </Card.Body>
                     </Card>
                 </div>

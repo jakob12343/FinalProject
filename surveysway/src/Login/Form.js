@@ -38,7 +38,7 @@ function Formexampl() {
 
             const passCheck = regex.test(password);
             if (passCheck) {
-                const inSucsses = await SignIn({ user: { password, username } })
+                const inSucsses = await SignIn({ password, username  })
                 if (inSucsses) {
                     if (inSucsses === "incurrect password") {
                         setError(inSucsses)
