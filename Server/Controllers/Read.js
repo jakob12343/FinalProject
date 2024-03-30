@@ -4,9 +4,7 @@ const NonActive = require('../DAL/Schemas/NonActive')
 const Validations = require('../Validations/CreateVal')
 
 
-const Login = async (req, res) => {
-    console.log("login sucsses");
-}
+
 const PullUserDetails = async (req, res) => {
     const { Username, usertoken } = req.query
     const IsExist = await Validations.CheckUser(usertoken)
@@ -45,11 +43,10 @@ const PullAllSurveys = async (req, res) => {
 
         const data = await User.findOne({ username: Username })
         const excludeAuthorId = data._id
-        const surveys = await Survey.find({ author: { $ne: excludeAuthorId } })
-        surveys.forEach(el=>el.author=data.username)
-        console.log( surveys.author);
+        const surveys = await Survey.find({ author: { $ne: excludeAuthorId }, isPublic: true })
         res.status(200).json(surveys)
     }
+    
     else res.status(409).json({ message: "invalid user token" })
 }
 const PullUserSurveys = async (req, res) => {
@@ -76,4 +73,4 @@ const PullOldUserSurveys = async (req, res) => {
 }
 
 
-module.exports = { Login, PullUserDetails, ForgotPassword, PullUserSurveys, PullOldUserSurveys, PullAllSurveys }
+module.exports = {  PullUserDetails, ForgotPassword, PullUserSurveys, PullOldUserSurveys, PullAllSurveys }

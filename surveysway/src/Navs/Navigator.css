@@ -1,0 +1,51 @@
+/* Enhanced Navigation bar styles with image adjustments */
+.navbar {
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #ffffff, #0077b5); /* Gradient background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  position: sticky; /* Fixed position on scroll */
+  top: 0; /* Stick to the top of the viewport */
+  z-index: 1000; /* Ensure it stays above other content */
+  transition: background-color 0.3s ease; /* Smooth transition for background */
+  display: flex; /* Ensures navbar contents are flexibly aligned */
+  align-items: center; /* Vertically centers navbar contents */
+  padding: 0.5rem 1rem; /* Adequate padding for spacing */
+}
+
+.image {
+  margin-left: 2rem;
+  max-width: 5rem; /* Maximum width for the image */
+  height: auto; /* Maintain aspect ratio */
+  opacity: 0.75; /* Slightly transparent */
+  border-radius: 50%; /* Optional: creates a circle shape if desired */
+}
+
+/* Navbar link styling */
+.nav-link {
+  color: #333; /* Text color */
+  position: relative; /* Enables absolute positioning of ::after element */
+  padding: 0.5rem 1rem; /* Padding for clickable area */
+  text-decoration: none; /* Removes underline */
+  transition: color 0.3s ease; /* Transition for color change */
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #18399d; /* Color changes on hover/focus */
+  text-decoration: none; /* Ensures no underline on hover/focus */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #185b9d; /* Underline color */
+  transition: width 0.3s ease; /* Transition for underline expansion */
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Full width on hover */
+}

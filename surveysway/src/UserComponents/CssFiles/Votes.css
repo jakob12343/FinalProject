@@ -1,0 +1,25 @@
+/* General styles for the card text */
+.Card-Text {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Specific style for the selected option */
+.Card-Text.selected {
+    background-color: #f0f0f0; /* Light grey background for the selected option */
+    border: 1px solid #007bff; /* Border color to match Bootstrap primary color */
+}
+
+/* Style for the progress bar to ensure it matches with the overall UI */
+.ProgressBar {
+    margin-top: 10px;
+}
+
+/* Ensures the icons align nicely with the text */
+.fa-check, .fa-xmark {
+    margin-left: 5px;
+    vertical-align: middle;
+}

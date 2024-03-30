@@ -7,7 +7,8 @@ const MainProvider = ({ children }) => {
     const [usertoken, setusertoken] = useState("1234");
     const [UserMode, setUserMode] = useState("")
     const [UserData, setUserData] = useState({})
-    const [Username,setUsername]=useState("")
+    const [Username, setUsername] = useState("")
+    const [Alldetails, setAlldetails]=useState({})
     const [exp, setExp] = useState()
     const SignAsGuest = async () => {
         try {
@@ -21,46 +22,33 @@ const MainProvider = ({ children }) => {
             console.error("Error fetching guest token:", error);
         }
     };
-    const SignIn = async (user) => {
-        try {
-
-            const url = 'http://localhost:3000/SignIn';
-            const response = await axios.post(url, user);
-            setusertoken(response.data.token); // Assuming the token is in response.data
-            setUserMode(response.data.mode)
-            setUserData(user)
-
-        } catch (error) {
-            console.error("Error fetching user token:", error.response.data.message);
-            if (error.response && error.response.status === 401) {
-                return error.response.data.message
-            }
-        }
-
-    }
+   
     const ForgotPassword = async (user) => {
         const url = `http://localhost:3000/ForgotPassword?username=${user.user}&phone=${user.phoneNumber}`;
         let status
         try {
-             await axios.get(url)
-           status=200
-           setUsername(user.user)
+            await axios.get(url)
+            status = 200
+            setUsername(user.user)
         } catch (error) {
-            status=409
+            status = 409
         }
         return status
     }
     const EditPasword = async (newPassword) => {
         const url = 'http://localhost:3000/EditPasword';
-        await axios.put(url, {username:Username,newPassword});
+        await axios.put(url, { username: Username, newPassword });
 
     }
-    const Register = async (user) => {
+    const Register = async (user,newuser) => {
         try {
             const url = 'http://localhost:3000/Register';
             const response = await axios.post(url, user);
             setusertoken(response.data.token); // Assuming the token is in response.data
             setUserMode(response.data.mode)
+            setUserData(newuser)
+            setAlldetails(response.data.userdetails)
+
         } catch (error) {
             console.error("Error fetching user token:", error.response.data.message);
             if (error.response && error.response.status === 409) {
@@ -69,9 +57,25 @@ const MainProvider = ({ children }) => {
 
 
         }
-        if (usertoken !== "1234") {
-            PullUserDetails()
+        
+    }
+    const SignIn = async (user) => {
+        try {
+
+            const url = 'http://localhost:3000/SignIn';
+            const response = await axios.post(url, user);
+            setusertoken(response.data.token); // Assuming the token is in response.data
+            setUserMode(response.data.mode)
+            setUserData(user)
+            setAlldetails(response.data.userdetails)
+
+        } catch (error) {
+            console.error("Error fetching user token:", error.response.data.message);
+            if (error.response && error.response.status === 401) {
+                return error.response.data.message
+            }
         }
+
     }
     const PullUserDetails = async () => {
         try {
@@ -83,19 +87,25 @@ const MainProvider = ({ children }) => {
         }
     }
     useEffect(() => {
+
+    }, [Alldetails]);
+    
+    useEffect(() => {
         ValidateToken(exp, usertoken, setusertoken, setExp)
-    }, [usertoken, UserMode,exp]);
+    }, [usertoken, UserMode, exp]);
 
     const SharedObject = {
         UserMode,
         UserData,
         usertoken,
+        Alldetails,
         SignAsGuest,
         SignIn,
         Register,
         PullUserDetails,
         ForgotPassword,
-        EditPasword
+        EditPasword,
+        setAlldetails
     };
 
     return (

@@ -1,67 +1,73 @@
-import React, { useContext, useEffect } from 'react'
-import { Button, Card, ProgressBar } from 'react-bootstrap'
-import { UserContext } from './UserContext'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
+import React, { useContext } from 'react';
+import { Button, Card, ProgressBar } from 'react-bootstrap';
+import { UserContext } from './UserContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import './CssFiles/OwnServey.css';
 
-const OwnServey = () => {
-  const { PullUserSurveys, DeletTargetSurvey, OwnServeys } = useContext(UserContext)
-  const now = 60;
+const OwnSurvey = () => {
+  const { DeletTargetSurvey, OwnServeys } = useContext(UserContext);
 
-  useEffect(() => {
-    PullUserSurveys()
-    // eslint-disable-next-line
-  }, [])
-  useEffect(() => {
-    // eslint-disable-next-line
-  }, [OwnServeys])
-  const CallculateVotes = (survey, vote) => {
-    const results = survey.responses.filter(item => item.responses.answers[0] === vote)
-    return results / (OwnServeys.length / 100)
+  const calculateVotes = (survey, optionIndex) => {
+    let count = 0;
+    survey.responses.forEach((response) => {
+      // Checking if the response's option matches the optionIndex
+      if (response.option === optionIndex) {
+        count++;
+      }
+    });
+  
+    let totalResponses = survey.responses.length;
+    return totalResponses > 0 ? (count / totalResponses) * 100 : 0;
+  };
+  
 
-  }
-  const drawAnswer = (survey, item, i) => {
-    const result = CallculateVotes(survey, item)
-    return <div key={i}> <Card.Text >
-      Answer Number {i + 1}: {item}
-    </Card.Text>
-      <ProgressBar now={result} label={`${result}%`} />
+const drawAnswer = (survey, item, i) => {
+    const result = calculateVotes(survey, i);
+    return (
+        <div key={i}>
+            <div className='Card-Tex'>
+                Answer Number {i + 1}: {item}
+            </div>
+            <ProgressBar className='ProgressBar' now={result} label={`${result}%`} />
+        </div>
+    );
+};
 
-    </div>
-  }
-  const DeletSurvey = (survey) => {
-    DeletTargetSurvey(survey.target.name)
-  }
+
+  const deleteSurvey = (surveyId) => {
+    DeletTargetSurvey(surveyId);
+  };
+
   return (
     <div>
       {OwnServeys.map((survey, index) => (
         <div key={index}>
-          <Card style={{ width: '18rem' }}>
-            <Card.Body>
-              <Card.Title>{survey.purpose}</Card.Title>
-              <Card.Title>{survey.title}</Card.Title>
-              <Card.Text>
+          <Card className='Card' style={{ width: '18rem' }}>
+            <Card.Body className='Card-Body'>
+              <Card.Title className='Card-Title'>{survey.purpose}</Card.Title>
+              <Card.Title className='Card-Title'>{survey.title}</Card.Title>
+              <div className='Card-Tex'>
                 Duration: {new Date(survey.duration).toLocaleDateString('en-GB')}
-              </Card.Text>
-              <Card.Text>
+              </div>
+              <div className='Card-Tex'>
                 question: {survey.questions[0].text}
-              </Card.Text>
-              answers : {survey.questions[0].options.map((item, i) => drawAnswer(survey, item, i))}
-              <Card.Text>
-                Public? : {survey.isPublic && <FontAwesomeIcon icon={faCheck} style={{ marginLeft: '10px', cursor: 'pointer' }} />}
-                {!survey.isPublic && <FontAwesomeIcon icon={faXmark} style={{ marginLeft: '10px', cursor: 'pointer' }} />}
-              </Card.Text>
-              <Card.Text>
-                {survey.responses.length} VOTES
-
-              </Card.Text>
-              <Button name={survey._id} onClick={DeletSurvey} variant="primary">Delete This Survey</Button>
+              </div>
+              answers: {survey.questions[0].options.map((item, i) => drawAnswer(survey, item, i))}
+              <div className='Card-Tex'>
+                Public?: 
+                {survey.isPublic ? <FontAwesomeIcon className='FontAwesomeIcon' icon={faCheck} style={{ marginLeft: '10px', cursor: 'pointer' }} /> : <FontAwesomeIcon className='FontAwesomeIcon' icon={faXmark} style={{ marginLeft: '10px', cursor: 'pointer' }} />}
+              </div>
+              <div className='Card-Tex'>
+                Total Responses: {survey.responses.length}
+              </div>
+              <Button className='Button' name={survey._id} onClick={() => deleteSurvey(survey._id)} variant="primary">Delete This Survey</Button>
             </Card.Body>
           </Card>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default OwnServey
+export default OwnSurvey;

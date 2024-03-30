@@ -9,7 +9,7 @@ const NonActive= new mongoose.Schema(
           options: [{ type: String, required: true }],
         }],
         isPublic: { type: Boolean, required: true },
-        targetAudience: String,
+        targetAudience: [{ type: String }], 
         purpose: String,
         responses: [{
           user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },

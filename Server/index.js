@@ -4,6 +4,7 @@ const Get=require('./Controllers/Read')
 const Create=require('./Controllers/Create')
 const Delete=require('./Controllers/Delete')
 const Update=require('./Controllers/Update')
+const Middlewares=require('./Controllers/MiddleWares')
 const DataBase =require('./DAL/DB')
 const cors=require('cors')
 require('dotenv').config();
@@ -18,13 +19,17 @@ app.use(cors())
 // activate DB
 DataBase();
 
+
 //////////////// CRUD////////////////
 
 // Posts
 app.post('/Register', (req,res)=>{Create.Register(req,res)})
-app.post('/PublishSuervey', (req,res)=>{Create.PublishSuervey(req,res)})
+app.post('/PublishSuervey', (req,res)=>{
+    Create.PublishSuervey(req,res);
+   
+})
 app.post('/GetguestToken', (req,res)=>{Create.GetguestToken(req,res)})
-app.post('/SignIn' ,(req,res)=>{Create.SignIn(req,res)})
+app.post('/SignIn' , Middlewares.RefreshSurveyListByDate ,(req,res)=>{Create.SignIn(req,res)})
 app.post('/GetNewToken', (req,res)=>{Create.GetNewToken(req,res)})
 // Reads
 app.get('/Login', (req,res)=>{Get.Login(req,res)})

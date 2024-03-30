@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigator from './Navs/Navigator';
 import { UserProvider } from './UserComponents/UserContext';
 import {  GuestProvider } from './GusetComponents/GusetContext';
+// import Footer from './Navs/Footer';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
 
               {/* ... other routes */}
             </Routes>
+            {/* <Footer/> */}
           </Router>
 
         </UserProvider>

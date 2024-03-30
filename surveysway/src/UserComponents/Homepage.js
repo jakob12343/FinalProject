@@ -9,37 +9,37 @@ import './CssFiles/HomePage.css'
 import { Surveys } from './Surveys';
 import PublishSurvey from './PublishSurvey';
 const Homepage = () => {
-  const {PullUserDetails,Data}=useContext(UserContext)
+  const {Alldetails}=useContext(UserContext)
  useEffect(()=>{
-PullUserDetails()
-// eslint-disable-next-line
- },[])
+ },[Alldetails])
+ 
   return (
     <div> <Tab.Container id="left-tabs-example" defaultActiveKey="first">
     <Row>
       <Col sm={3}>
-        <Nav variant="pills" className="flex-column">
+
+        <Nav  variant="pills" className="nav-pills flex-column">
           <Nav.Item>
-            <Nav.Link eventKey="first">User Details</Nav.Link>
+            <Nav.Link className='nav-link' eventKey="first">User Details</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="second">Publish Survey</Nav.Link>
+            <Nav.Link className='nav-link' eventKey="second">Publish Survey</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="third">Surveys Managments</Nav.Link>
+            <Nav.Link className='nav-link' eventKey="third">Surveys Managments</Nav.Link>
           </Nav.Item>
         </Nav>
       </Col>
       <Col sm={9}>
         <Tab.Content className='tab-content'>
-          <Tab.Pane eventKey="first">
-            <UserDetails className="user-details" data={Data}/>
+          <Tab.Pane className='tab-pane' eventKey="first">
+            <UserDetails className="user-details" data={Alldetails.user}/>
           </Tab.Pane>
-          <Tab.Pane eventKey="second">
+          <Tab.Pane className='tab-pane' eventKey="second">
             <PublishSurvey/>
           </Tab.Pane>
-          <Tab.Pane eventKey="third">
-            <Surveys/>
+          <Tab.Pane className='tab-pane' eventKey="third">
+           <Surveys/>
           </Tab.Pane>
         </Tab.Content>
       </Col>
