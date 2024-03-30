@@ -12,7 +12,6 @@ const RefreshSurveyListByDate=async(req, res, next)=>{
         if (Time>new Date(survey.duration).getTime()) {
 
             const deletedSurvey=await Survey.findByIdAndDelete(survey._id)
-            console.log(deletedSurvey);
             if (deletedSurvey) {
                 const deleted={
                     author :deletedSurvey.author,
@@ -25,7 +24,6 @@ const RefreshSurveyListByDate=async(req, res, next)=>{
                      responses: deletedSurvey.responses
                  }
                await NonActive.create(deleted)
-                console.log("deleted");
             }
         
        }
