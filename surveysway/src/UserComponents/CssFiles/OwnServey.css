@@ -1,0 +1,88 @@
+/* OwnServey.css */
+
+/* Using LinkedIn's color palette for consistency */
+:root {
+    --primary-color: #0077b5; /* LinkedIn blue */
+    --text-color: #293e49; /* LinkedIn's darker text color */
+    --background-light: #f4f6f8; /* Light grey background */
+    --border-color: #dce0e6; /* Soft border color */
+    --success-color: #28a745; /* Success green for check icon */
+    --danger-color: #dc3545; /* Danger red for xmark icon */
+    --progress-bar-color: #0077b5; /* LinkedIn blue for progress bar */
+}
+
+/* Card styling */
+.Card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 1rem; /* Space between cards */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+}
+
+.Card-Body {
+    padding: 1rem; /* Comfortable padding around the content */
+    background-color: white; /* White background */
+}
+
+.Card-Title {
+    color: var(--primary-color); /* Using LinkedIn blue for titles */
+    font-weight: bold; /* Bold font weight for titles */
+}
+
+.Card-Text {
+    color: var(--text-color); /* Consistent text color */
+    margin-bottom: 0.5rem; /* Space below text for separation */
+}
+
+/* Progress bar styling */
+.ProgressBar {
+    height: 1rem; /* Standard height for progress bars */
+    background-color: #e9ecef; /* Light background for progress bar track */
+    border-radius: 0.5rem; /* Rounded edges for progress bar */
+    margin-bottom: 1rem; /* Space below each progress bar */
+}
+
+.ProgressBar .progress-bar {
+    background-color: var(--progress-bar-color); /* LinkedIn blue for the progress bar */
+    font-weight: bold; /* Bold font for the label */
+}
+
+/* Icon styling */
+.Card-Text .FontAwesomeIcon {
+    margin-left: 0.5rem; /* Space next to text */
+}
+
+.faCheck {
+    color: var(--success-color); /* Green color for success/check */
+}
+
+.faXmark {
+    color: var(--danger-color); /* Red color for danger/xmark */
+}
+
+/* Button styling */
+.Button {
+    background-color: var(--primary-color); /* LinkedIn blue for buttons */
+    border: none; /* No border for buttons */
+    border-radius: 4px; /* Rounded edges for buttons */
+    color: white; /* White text on buttons */
+    padding: 0.5rem 1rem; /* Padding inside the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-weight: bold; /* Bold text within the button */
+}
+
+.Button:hover {
+    background-color: var(--hover-primary-color); /* Slightly darker blue on hover */
+}
+
+/* Media query for responsive design */
+@media (max-width: 768px) {
+    .Card {
+        width: 100%; /* Full width on small screens */
+        margin-bottom: 1rem; /* More space between cards */
+    }
+
+    .Card-Body {
+        padding: 1rem; /* Comfortable padding */
+    }
+}
