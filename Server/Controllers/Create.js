@@ -122,7 +122,7 @@ const SignIn = async (req, res) => {
                 });
                 const surveys = await Survey.find({ author: isSucsses._id })
                 const OldSurveys = await NonActive.find({ author: isSucsses._id })
-                const Allsurveys = await Survey.find({ author: { $ne: isSucsses._id } })
+                const Allsurveys = await Survey.find({ author: { $ne: isSucsses._id }, isPublic: true })
                 const SharedObject =
                 {
                     user: isSucsses,

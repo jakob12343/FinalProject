@@ -1,38 +1,41 @@
-/* PublishSurvey.css */
+/* Enhanced PublishSurvey.css for a more dynamic look */
 
 .form-wrapper {
   background-color: #fff;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Slightly deeper shadow for depth */
   max-width: 600px;
   margin: 2rem auto;
+  border: 1px solid #ced4da; /* Added subtle border */
 }
 
 .form-wrapper h1 {
   color: #0073b1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem; /* More space under the header */
+  font-weight: bold; /* Added weight to the header font */
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem; /* Increased spacing between form groups */
 }
 
 .form-label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  color: #293e49; /* LinkedIn text color */
+  margin-bottom: 0.75rem; /* Slightly more space above inputs */
+  font-size: 1.1rem; /* Slightly larger font size */
+  color: #293e49; /* Maintaining LinkedIn text color */
+  font-weight: bold; /* Making labels bold */
 }
 
 .form-input, .form-control {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1px solid #ced4da;
+  border: 2px solid #ced4da; /* Slightly thicker border for focus */
   border-radius: 4px;
-  margin-bottom: 1rem; /* Ensure space between form elements */
+  margin-bottom: 1rem;
   box-sizing: border-box;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .form-input:focus, .form-control:focus {
@@ -41,49 +44,45 @@
   box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
 }
 
+/* Styling for buttons */
 .form-button, button {
   background-color: #0073b1;
   color: #ffffff;
   border: none;
-  padding: 10px 15px;
+  padding: 12px 20px; /* Larger padding for a more substantial button */
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.15s ease-in-out;
+  font-size: 1.1rem; /* Larger font size for button text */
+  transition: background-color 0.2s ease-in-out;
 }
 
 .form-button:hover, button:hover {
   background-color: #0056b3;
 }
 
-.add-option-button, .question-remove-button {
-  background-color: #f3f2ef;
-  color: #0073b1;
-  border: 1px solid #ced4da;
-  padding: 5px 10px;
+/* Styling for category selection area */
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Space between checkboxes */
   margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.15s ease-in-out;
 }
 
-.add-option-button:hover, .question-remove-button:hover {
-  background-color: #e1e9ee;
+.category-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem; /* Slightly smaller font for categories */
 }
 
-/* Specific to checkboxes for "Is Public" */
-.form-check-input {
-  width: 20px;
-  height: 20px;
-  margin-top: 0.3rem;
-  margin-right: 0.5rem;
-  cursor: pointer;
+/* Enhancements for checkbox labels */
+.category-item input[type="checkbox"] {
+  margin-right: 5px; /* Space between checkbox and label */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .form-wrapper {
-      padding: 1rem;
-      margin: 1rem;
+    padding: 1rem;
+    margin: 1rem auto; /* Ensure it's centered on smaller screens */
   }
 }

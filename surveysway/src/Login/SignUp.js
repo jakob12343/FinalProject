@@ -21,6 +21,58 @@ const SignUp = () => {
         maritalStatus: '',
         countryOfOrigin: '',
     });
+    const Countries = [
+        "Afghanistan",
+        "Algeria",
+        "Angola",
+        "Argentina",
+        "Bangladesh",
+        "Brazil",
+        "Canada",
+        "China",
+        "Colombia",
+        "Egypt",
+        "Ethiopia",
+        "France",
+        "Germany",
+        "Ghana",
+        "India",
+        "Indonesia",
+        "Iran",
+        "Iraq",
+        "Israel",
+        "Italy",
+        "Japan",
+        "Kenya",
+        "Madagascar",
+        "Malaysia",
+        "Mexico",
+        "Morocco",
+        "Mozambique",
+        "Myanmar",
+        "Nepal",
+        "Nigeria",
+        "Pakistan",
+        "Peru",
+        "Philippines",
+        "Poland",
+        "Russia",
+        "Saudi Arabia",
+        "South Africa",
+        "South Korea",
+        "Spain",
+        "Sudan",
+        "Tanzania",
+        "Thailand",
+        "Turkey",
+        "Uganda",
+        "Ukraine",
+        "United Kingdom",
+        "United States",
+        "Uzbekistan",
+        "Venezuela",
+    ];
+    const Religions=["Jewish", "Muslims", "Christian", "Undefined"]
     const Genders = ["Male", "Woman", "Undefined"]
     const PersonalStatus = ["Singel", "Married", "Divorced", "Widow", "Undefined"]
     const handleChange = (e) => {
@@ -153,15 +205,19 @@ const SignUp = () => {
 
                         <Form.Group className="mb-3" controlId="formBasicReligion">
                             <Form.Label>Religion</Form.Label>
-                            <Form.Control
-                                className='form-input'
-
-                                type="text"
-                                placeholder="Religion"
-                                name="religion"
+                            <Form.Select
                                 value={formData.religion}
                                 onChange={handleChange}
-                            />
+                                name="religion"
+
+                            >
+                                <option value="">Select category</option>
+                                {Religions.map((el) => (
+                                    <option key={el} value={el}>
+                                        {el}
+                                    </option>
+                                ))}
+                            </Form.Select>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicAddress">
                             <Form.Label>Address</Form.Label>
@@ -195,15 +251,19 @@ const SignUp = () => {
 
                         <Form.Group className="mb-3" controlId="formBasicCountryOfOrigin">
                             <Form.Label>Country of Origin</Form.Label>
-                            <Form.Control
-                                className='form-input'
-
-                                type="text"
-                                placeholder="Country of Origin"
-                                name="countryOfOrigin"
+                            <Form.Select
                                 value={formData.countryOfOrigin}
                                 onChange={handleChange}
-                            />
+                                name="countryOfOrigin"
+
+                            >
+                                <option value="">Select category</option>
+                                {Countries.map((el) => (
+                                    <option key={el} value={el}>
+                                        {el}
+                                    </option>
+                                ))}
+                            </Form.Select>
                         </Form.Group>
 
 

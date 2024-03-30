@@ -10,7 +10,7 @@ const Survey= new mongoose.Schema(
         }],
         duration: { type: Date, required: true },
         isPublic: { type: Boolean, required: true },
-        targetAudience: String,
+        targetAudience: [{ type: String }], 
         purpose: String,
         responses: [{
           user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },

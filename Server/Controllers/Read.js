@@ -43,7 +43,7 @@ const PullAllSurveys = async (req, res) => {
 
         const data = await User.findOne({ username: Username })
         const excludeAuthorId = data._id
-        const surveys = await Survey.find({ author: { $ne: excludeAuthorId } })
+        const surveys = await Survey.find({ author: { $ne: excludeAuthorId }, isPublic: true })
         res.status(200).json(surveys)
     }
     

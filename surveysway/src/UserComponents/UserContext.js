@@ -69,6 +69,7 @@ const UserProvider = ({ children }) => {
         const url = `http://localhost:3000/Vote?&usertoken=${usertoken}`;
         const status = await axios.put(url, vote)
         PullAllSurveys()
+        return status
 
     }
     const DeletTargetSurvey = async (id) => {
