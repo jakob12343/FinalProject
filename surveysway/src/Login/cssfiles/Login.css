@@ -1,92 +1,10 @@
-/* General reset styles remain unchanged */
-
-/* Updated login-container to match the app's theme and size */
-.login-container {
-    max-width: 400px;
-    margin: 4rem auto;
-    padding: 3rem;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-/* Typography for title */
-.login-title {
-    margin-bottom: 2rem;
-    text-align: center;
-    color: #333;
-    font-size: 2.4rem; /* Increased font size */
-    font-weight: bold; /* Make it bold for better visibility */
-}
-
-/* Spacing and layout for form */
-.login-form {
+.Login-container{
     display: flex;
+    align-items: center;
     flex-direction: column;
-}
+    height: 91vh;
+    justify-content: center;
 
-/* Styling for input fields */
-.login-form input[type="text"],
-.login-form input[type="password"] {
-    padding: 1rem; /* Increased padding */
-    margin-bottom: 1.5rem; /* Increased margin-bottom */
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    font-size: 1.6rem; /* Increased font size */
-    transition: all 0.3s ease-in-out; /* Smooth transition for interaction */
+    background: rgb(187,195,214);
+    background: linear-gradient(85deg, rgba(187,195,214,0.07886904761904767) 24%, rgba(0,119,181,0.4542191876750701) 93%);
 }
-
-/* Focus and hover effects for input fields */
-.login-form input[type="text"]:focus,
-.login-form input[type="password"]:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-}
-
-/* Button styling to make it more inviting and interactive */
-.login-form button {
-    padding: 1rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #007bff;
-    color: white;
-    font-size: 1.6rem; /* Increased font size for better readability */
-    cursor: pointer;
-    transition: all 0.3s ease-in-out; /* Transition for a smooth effect */
-}
-
-/* Hover effect for buttons */
-.login-form button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px); /* Slight raise effect */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Shadow for depth */
-}
-
-/* Error message styling */
-.error-message {
-    color: #dc3545;
-    font-size: 1.4rem; /* Increased font size for better visibility */
-    margin-bottom: 1rem;
-}
-
-/* Additional styles to match the app theme */
-/* Make sure links are consistent with app theme */
-.login-form a {
-    color: #007bff;
-    font-size: 1.4rem; /* Increased font size for better readability */
-    transition: color 0.3s ease-in-out; /* Smooth transition for hover effect */
-}
-
-.login-form a:hover {
-    color: #0056b3;
-    text-decoration: underline; /* Underline for interactivity */
-}
-
-/* Utility class adjustments */
-.container {
-    /* ...existing styles... */
-    padding: 0 2.5rem; /* Match the container padding with form elements */
-}
-
-/* ... Other utility classes ... */

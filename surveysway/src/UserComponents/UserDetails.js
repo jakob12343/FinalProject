@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import useplaceholder from '../userPlaceholder.jpeg'
-import { Button, Card, Form } from 'react-bootstrap'
+import {  Card} from 'react-bootstrap'
 import { faCheck, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
-
 import './CssFiles/UserDetails.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UserContext } from './UserContext';
@@ -62,9 +61,10 @@ const UserDetails = ({ data }) => {
     UpdateUserDetails(formData)
   }
   return (
+<div className='User'>
+<img src={useplaceholder} className='Img' alt="" />
 
-    <Card >
-      <Card.Img className='Img' variant="top" src={ useplaceholder} />
+    <Card className='User-Card'>
       <Card.Body>
 
         <Card.Title>Username: {formData.username}</Card.Title>
@@ -76,9 +76,8 @@ const UserDetails = ({ data }) => {
           </Card.Title>)
         }
         {isAdressEditing && (
-          <Card.Title>Adress: {formData.address} <Form.Control
-            className='form-input'
-
+          <Card.Title>Adress: {formData.address} <input
+            className='User-input'
             type="text"
             placeholder="Address"
             name="address"
@@ -93,9 +92,8 @@ const UserDetails = ({ data }) => {
           </Card.Title>)
         }
         {isBirthDateEditing && (
-          <Card.Title>birthDate: {formData.birthDate} <Form.Control
-            className='form-input'
-
+          <Card.Title>birthDate: {formData.birthDate} <input
+            className='User-input'
             type="text"
             placeholder="birthDate"
             name="birthDate"
@@ -110,9 +108,8 @@ const UserDetails = ({ data }) => {
           </Card.Title>)
         }
         {isGenderEditing && (
-          <Card.Title>Gender: {formData.gender} <Form.Control
-            className='form-input'
-
+          <Card.Title>Gender: {formData.gender} <input
+            className='User-input'
             type="text"
             placeholder="gender"
             name="gender"
@@ -127,9 +124,8 @@ const UserDetails = ({ data }) => {
           </Card.Title>)
         }
         {isMartialStatuseEditing && (
-          <Card.Title>Personal Status: {formData.maritalStatus} <Form.Control
-            className='form-input'
-
+          <Card.Title>Personal Status: {formData.maritalStatus} <input
+            className='User-input'
             type="text"
             placeholder="maritalStatus"
             name="maritalStatus"
@@ -145,12 +141,13 @@ const UserDetails = ({ data }) => {
 
 
 
-        {!(isAdressEditing || isBirthDateEditing || isGenderEditing || isMartialStatuseEditing) && <Button onClick={Submit} variant="primary">Update Details</Button>
+        {!(isAdressEditing || isBirthDateEditing || isGenderEditing || isMartialStatuseEditing) && <button onClick={Submit} className='User-Button '>Update Details</button>
         }
 
 
       </Card.Body>
     </Card>
+    </div>
   )
 }
 

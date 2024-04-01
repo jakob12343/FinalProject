@@ -1,164 +1,58 @@
-/* Enhanced LinkedIn-style theme for homepage */
-
-:root {
-    /* LinkedIn color scheme variables */
-    --primary-color: #0077b5; /* LinkedIn blue for primary actions */
-    --hover-primary-color: #005e93; /* Darker blue for hover states */
-    --secondary-color: #f3f2ef; /* Light grey used for backgrounds */
-    --border-color: #ced4da; /* Grey for borders and lines */
-    --text-color: #333333; /* Dark grey for text */
-    --text-muted-color: #666666; /* Muted text color for less emphasis */
-    --error-color: #d9534f; /* Red for error messages */
-    --box-shadow: 0 4px 6px 0 rgba(0,0,0,0.2); /* Box shadow for depth */
-}
-
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-size: 16px;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-}
-
-#left-tabs-example {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2rem; /* Increased gap between items */
-    padding: 2rem;
-    background-color: var(--secondary-color);
+.nav-pills .nav-link.active {
+    color: #fff !important;
+    background-color: #0077b5 !important;
 }
 
 .nav-pills .nav-link {
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    margin-right: 0.5rem;
-    border-radius: 4px;
-    transition: all 0.3s ease-in-out;
-}
-
-.nav-pills .nav-link:hover, .nav-pills .nav-link:focus {
-    border-color: var(--hover-primary-color);
-    background-color: var(--hover-primary-color);
-    color: white;
-    transform: translateY(-2px); /* Subtle lift effect */
-}
-
-.nav-pills .nav-link.active {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: white;
-}
-
-.tab-content {
-    background-color: white;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    box-shadow: var(--box-shadow);
-    padding: 2rem;
-    width: 100%;
-    max-width: 800px;
-}
-
-.tab-content button {
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 4px;
-    color: white;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-.tab-content button:hover {
-    background-color: var(--hover-primary-color);
-    transform: scale(1.05); /* Slightly enlarge the button */
-}
-/* Additional styling for Tab.Pane within the LinkedIn-style theme */
-
-.tab-content .tab-pane {
-    margin-top: 0.5rem;
-    padding: 1rem; /* Consistent padding around the content of the pane */
-    border-radius: 4px; /* Match the border-radius of the tab-content container */
-    background-color: white; /* Ensure a clean, white background */
-    box-shadow: var(--box-shadow); /* Utilize the same shadow for depth */
-    margin-top: 1rem; /* Space above the pane for clear separation from tabs */
-}
-
-.tab-content .tab-pane h2, .tab-content .tab-pane h3 {
-    color: var(--primary-color); /* Use LinkedIn blue for heading colors */
-    margin-top: 0.5rem; /* Top margin for heading spacing */
-    margin-bottom: 1rem; /* Bottom margin for heading spacing */
-}
-
-.tab-content .tab-pane p {
-    color: var(--text-color); /* Standard text color for readability */
-    line-height: 1.6; /* Improved line height for readability */
-    margin-bottom: 1rem; /* Space below paragraphs for better flow */
-}
-
-.tab-content .tab-pane .btn {
-    background-color: var(--primary-color); /* Consistent button color */
-    border: none; /* No border for a cleaner look */
-    padding: 0.5rem 1rem; /* Adequate padding for clickability */
-    margin-top: 0.5rem; /* Margin above buttons for spacing */
-    border-radius: 4px; /* Rounded corners for buttons */
-    color: white; /* Text color for contrast */
-    transition: background-color 0.2s, transform 0.2s; /* Smooth transitions for interaction */
-}
-
-.tab-content .tab-pane .btn:hover {
-    background-color: var(--hover-primary-color); /* Darker on hover for feedback */
-    transform: scale(1.05); /* Slight increase in size for emphasis */
-}
-
-.tab-content .tab-pane .btn:active {
-    transform: scale(0.95); /* Slight decrease in size on click for feedback */
-}
-
-.tab-content .tab-pane .form-control {
-    border: 1px solid var(--border-color); /* Consistent border styling */
-    border-radius: 4px; /* Rounded corners for form controls */
-    margin-bottom: 1rem; /* Space below form controls */
-}
-
-.tab-content .tab-pane .form-control:focus {
-    border-color: var(--primary-color); /* Highlight color on focus */
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Glow effect for focus */
-}
-
-/* Ensure the accordion or any list within Tab.Pane aligns nicely */
-.tab-content .tab-pane .list-group-item {
-    border-color: var(--border-color); /* Consistent list item borders */
-    margin-bottom: 0.5rem; /* Space between list items */
-    border-radius: 4px; /* Rounded corners for list items */
-}
-
-
-@media (max-width: 992px) {
-    #left-tabs-example {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .nav-pills {
-        justify-content: center; /* Center the pills on smaller screens */
-        margin-bottom: 1rem;
-    }
-
-    .tab-content {
-        margin-top: 1rem;
-    }
-}
-
-.error-message {
-    color: var(--error-color);
-    background-color: #ffe9e9;
-    border-color: var(--error-color);
-    border-radius: 4px;
-    padding: 0.75rem 1.25rem;
-    margin: 1rem 0; /* Added margin for spacing */
+    width: 100%; /* Ensure full width for better tap targets */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10%;
     text-align: center;
+    display: block; /* Change to block to stack them vertically */
+    padding: 15px; /* Adjust padding for smaller screens */
+    border: 1px solid #fff;
+    cursor: pointer;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0; /* Adjust margin for vertical stacking */
+}
+
+.flx{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.nav-pills .nav-link::before {
+    border-radius: 10%;
+    content: "";
+    position: absolute;
+    height: 150px;
+    width: 50px;
+    background: #0077b5;
+    left: -55px;
+    top: -40px;
+    transform: rotate(37deg);
+    transition: all .3s;
+    opacity: 0.3;
+}
+
+.nav-pills .nav-link:hover::before {
+    left: 95%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-pills .nav-link {
+        padding: 10px 20px; /* More suitable padding for smaller screens */
+        margin: 5px 0; /* Reduce margin to save space */
+    }
+
+    /* Adjust the size of the before element on hover for smaller screens */
+    .nav-pills .nav-link::before {
+        height: 100px; /* Smaller effect for smaller screens */
+        width: 30px; /* Narrower */
+        left: -35px; /* Adjusted to fit smaller screen */
+    }
 }

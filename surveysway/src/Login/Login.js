@@ -3,8 +3,8 @@ import Form from './Form'
 import './cssfiles/Login.css'
 const Login = () => {
   return (
-   <div>
-    <Form/>
+   <div className='Login-container' >
+    <Form />
    </div>
   )
 }
