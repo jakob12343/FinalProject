@@ -1,9 +1,79 @@
-.z-index{
-    z-index: 1000;
-    position: absolute;
-    top: 10%;
-    right: 37%;
-    width: 25vw;
-    height: 80vh;
-    background-color: rgba(145, 226, 172, 0.25);
+.reset{
+    display: flex;
+    justify-content: center;
 }
+.reset-form {
+    width: 35vw;
+    max-width: 500px; /* Prevents the form from becoming too wide on large screens */
+    min-width: 300px; /* Ensures the form doesn't get too narrow on small screens */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin-top: 3px;
+    z-index: 1;
+}
+.reset-input {
+    width: 100%; /* Adjust width for better control */
+    margin: 10px 0; /* Add margin for spacing */
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 10px; /* Increased padding for better touch interaction */
+}
+
+.reset-wrapper {
+    width: 100%; /* Ensures the form uses the full width of its container */
+    display: flex;
+    flex-direction: column;
+    padding: 20px; 
+}
+.reset-button {
+   
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10%;
+    text-align: center;
+    display: inline-block;
+    padding: 5px 20px;
+    border: 1px solid #fff;
+    cursor: pointer;
+    letter-spacing: 2px;
+    position:relative;
+    overflow:hidden;
+    margin: 0 20px;
+  }
+  
+  .reset-button:before {
+    border-radius: 10%;
+    content: "";
+    position: absolute;
+    height: 150px;
+    width: 50px;
+    background : #0077b5;
+    left: -55px;
+    top: -40px;
+    transform: rotate(37deg);
+    transition: all .3s;
+    opacity: 0.3;
+  }
+  
+  .reset-button:hover:before {
+    left:95%;
+  }
+  
+  
+@media (max-width: 768px) {
+    .reset-form {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+        width: 90vw; /* Increase width to use more screen space on small devices */
+    }
+
+    .reset-input, .reset-button {
+        padding: 15px; /* Increase padding for easier interaction */
+    }
+}
+
+

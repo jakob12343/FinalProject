@@ -1,69 +1,117 @@
-/* form.css */
-
-.form-wrapper {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 40px;
-    background-color: #ffffff; /* Brighter background for a clean look */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+.container-form {
+    width: 60vw;
+    display: flex;
+    flex-direction: row; /* Ensure items are laid out in a row */
+    justify-content: center;
+    align-items: center; /* Stretch items to fill the container height */
+    background-size: cover;
+    background-position: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;    margin-top: 3px;
+    z-index: 1;
+}
+.Image-Sing, .form-wrapper {
+    flex: 1; /* Ensure form and image each take half of the container's width */
+    max-width: 50%; /* Limit maximum width to 50% */
+    object-fit: cover; /* Ensure images cover the area without losing aspect ratio */
 }
 
-.form-group {
-    margin-bottom: 20px; /* Increased for better spacing */
-}
+.Image-Sing{
+    max-height: fit-content;
 
-.form-label {
-    display: block;
-    margin-bottom: 10px; /* Increased for better spacing */
-    color: #333;
-    font-size: 18px; /* Increased font size for better readability */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
-.form-input {
-    width: 100%;
-    padding: 15px; /* Increased padding for a larger touch area */
-    margin-bottom: 20px; /* Increased for better spacing */
-    border: 2px solid #ccc; /* Thicker border for better visibility */
-    border-radius: 6px; /* Slightly more rounded borders for modern look */
-    font-size: 18px; /* Larger font size */
-    box-sizing: border-box;
-}
-
-.form-input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Stronger focus state */
+.form-input{
     outline: none;
-}
-
-.form-button {
-    width: 100%;
-    padding: 15px; /* Larger padding for a more substantial button */
     border: none;
-    border-radius: 6px; /* Consistent border radius */
-    background-color: #007bff; /* Primary action color */
-    color: #ffffff;
-    font-size: 18px; /* Larger font size for readability */
+    border-bottom: 1px solid black;
+    padding: 5px 35px  5px 35px ;
+
+}
+
+.form-wrapper{
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+}
+.form-button {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10%;
+    text-align: center;
+    display: inline-block;
+    padding: 5px 20px;
+    border: 1px solid #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+    position:relative;
+    overflow:hidden;
+    margin: 0 20px;
+  }
+  
+  .form-button:before {
+    border-radius: 10%;
+
+    content: "";
+    position: absolute;
+    height: 150px;
+    width: 50px;
+    background : #0077b5;
+    left: -55px;
+    top: -40px;
+    transform: rotate(37deg);
+    transition: all .3s;
+    opacity: 0.3;
+  }
+  
+  .form-button:hover:before {
+    left:95%;
+  }
+  
+  @media (max-width: 768px) {
+    .container-form {
+        flex-direction: column;
+        width: 80vw; /* Adjust the width on smaller screens for some margin */
+        margin-top: 20px; /* Increase top margin */
+    }
+
+    .Image-Sing, .form-wrapper {
+        max-width: 100%; /* Use full container width */
+        margin: 10px 0; /* Add some vertical margin between the image and form */
+    }
+
+    .form-input, .form-button {
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+    }
+
+    .form-wrapper {
+        height: auto; /* Make height auto to accommodate the content */
+        padding: 20px; /* Increase padding for better spacing */
+    }
 }
 
-.form-button:hover {
-    background-color: #0056b3; /* Slightly darker on hover for better interaction */
-    transform: translateY(-2px); /* Lift effect on hover for interactivity */
+@media (max-width: 480px) {
+    .container-form {
+        width: 90vw; /* Increase width to closer to the screen size for very small devices */
+    }
+
+    .form-input, .form-button {
+        padding: 8px 15px; /* Slightly reduce padding for very small screens */
+    }
 }
 
-.error-message {
-    color: #dc3545; /* Error color */
-    font-size: 16px; /* Slightly larger for visibility */
-    margin-top: -5px;
-    margin-bottom: 15px; /* Increased for better separation from input fields */
+@media (min-width: 1024px) {
+    .container-form {
+        width: 50vw; /* Optionally reduce the width on larger screens for a more centered look */
+        padding: 20px; /* Add padding around the container for better aesthetics */
+    }
+
+    .form-input, .form-button {
+        padding: 12px 24px; /* Increase padding for larger screens for better proportionality */
+    }
+
+    .Image-Sing, .form-wrapper {
+        max-width: 50%; /* Ensure these elements do not stretch too wide */
+    }
 }
 
-/* Adjusted utility classes for margin and padding */
-.mt-20 { margin-top: 20px; }
-.mb-20 { margin-bottom: 20px; }
-.pt-20 { padding-top: 20px; }
-.mr-1 { margin-right: 10px; }
-.pb-20 { padding-bottom: 20px; }

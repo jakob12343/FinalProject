@@ -1,107 +1,87 @@
-/* SignUp.css */
-
-.signup-container {
-    max-width: 500px;
-    margin: 4rem auto;
-    padding: 3rem;
-    background-color: #fff; /* Use a clean white background */
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for subtlety */
-    transition: all 0.3s ease; /* Transition for all hover effects */
+.sign-up {
+    display: flex;
+    justify-content: center;
 }
 
-.signup-title {
-    margin-bottom: 2rem;
-    font-size: 2.4rem; /* Increase for importance */
-    text-align: center;
-    color: #333;
-    font-weight: 600;
+.signup-container {
+    width: 35vw;
+    max-width: 500px; /* Prevents the form from becoming too wide on large screens */
+    min-width: 300px; /* Ensures the form doesn't get too narrow on small screens */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin-top: 3px;
+    z-index: 1;
+}
+.sign-input {
+    width: 80%; /* Adjust width for better control */
+    margin: 10px 0; /* Add margin for spacing */
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 10px; /* Increased padding for better touch interaction */
 }
 
 .signup-form {
+    width: 100%; /* Ensures the form uses the full width of its container */
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Consistent spacing between form elements */
+    padding: 20px; /* Increased padding for aesthetics */
 }
-
-.form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-label {
-    font-size: 1.6rem; /* Larger font size for readability */
-    color: #333; /* Slightly darker for better contrast */
-    font-weight: 500;
-}
-
-.form-input, .form-select {
-    padding: 1.2rem 1.5rem; /* Increase padding for touch friendliness */
-    border: 2px solid #ddd; /* Subtle border */
-    border-radius: 8px;
-    font-size: 1.6rem; /* Larger font size for readability */
-    background-color: #fafafa;
-    transition: border-color 0.25s ease-in-out;
-}
-
-.form-input:focus, .form-select:focus {
-    outline: none;
-    border-color: #007bff; /* Highlight color on focus */
-    background-color: #fff; /* White background on focus for contrast */
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Additional focus indicator */
-}
-
 .signup-button {
-    padding: 1.2rem 1.5rem;
-    background-color: #007bff; /* Primary action color */
-    color: #ffffff;
-    font-size: 1.8rem; /* Larger button text */
-    border: none;
-    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10%;
+    text-align: center;
+    display: inline-block;
+    padding: 5px 20px;
+    border: 1px solid #fff;
     cursor: pointer;
-    transition: background-color 0.25s, transform 0.2s;
-}
+    letter-spacing: 2px;
+    position:relative;
+    overflow:hidden;
+    margin: 0 20px;
+    width: auto; /* Adjust if necessary for better control */
+    margin: 10px 0; /* Improved spacing */
+  }
+  
+  .signup-button:before {
+    border-radius: 10%;
 
-.signup-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-    transform: scale(1.05); /* Slight scale for interactivity */
-}
-
-.error-message {
-    color: #d9534f;
-    font-size: 1.4rem; /* Larger font size for visibility */
-    padding: 1rem; /* More padding for better readability */
-    border-radius: 5px;
-    background-color: #ffc7c7; /* Soft red background for the error message */
-    border: 1px solid #d9534f; /* Border to emphasize error message */
-    margin-top: -1rem; /* Adjust margin to overlap with the input field */
-    margin-bottom: 1.5rem; /* More space after the message */
-}
-
-/* Maintain responsive design with consistent padding and margin */
-@media (max-width: 768px) {
+    content: "";
+    position: absolute;
+    height: 150px;
+    width: 50px;
+    background : #0077b5;
+    left: -55px;
+    top: -40px;
+    transform: rotate(37deg);
+    transition: all .3s;
+    opacity: 0.3;
+  }
+  
+  .signup-button:hover:before {
+    left:95%;
+  }
+  .signup-title{
+    color: #0077b5;
+  }
+  
+  @media (max-width: 768px) {
     .signup-container {
-        padding: 2rem;
-        margin: 2rem auto;
+        width: 90vw; /* Allows the container to be more flexible on small devices */
     }
 
-    .signup-form {
-        gap: 1rem;
+    .sign-input, .signup-button {
+        padding: 15px; /* Increase padding for easier interaction */
     }
 
-    .signup-button {
-        padding: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .form-label,
-    .form-input,
-    .form-select {
-        font-size: 1.4rem; /* Slightly reduce font size for smaller screens */
-    }
-
-    .error-message {
-        font-size: 1.2rem; /* Reduce font size for error messages on smaller screens */
+    .signup-title {
+        font-size: 1.5rem; /* Increase title size for better visibility */
     }
 }
+
+
