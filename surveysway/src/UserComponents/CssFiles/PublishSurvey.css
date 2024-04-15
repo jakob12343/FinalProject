@@ -28,9 +28,13 @@
 }
 
 .category-item {
-    flex: 1 1 200px; /* Adjust minimum width as needed */
+    flex: 1 1 100px; /* Adjust minimum width as needed */
 }
-
+.form-user-selction {
+    border-bottom: solid black 1px;
+    background-color: #eee;
+    margin-bottom: 3px;
+}
 .step-content {
     display: flex;
     flex-direction: column;

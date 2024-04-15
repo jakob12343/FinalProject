@@ -18,7 +18,7 @@ const PublishSurvey = () => {
 
   const [survey, setSurvey] = useState({
     title: '',
-    category: '',
+    category: 'Select Category',
     question: { text: '', options: ['', ''] }, // Initialize with two empty options
     duration: '',
     isPublic: false,
@@ -53,10 +53,13 @@ const PublishSurvey = () => {
   ];
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+  const [snackOpen, setSnackOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const isStepSkipped = (step) => {
     return skipped.has(step);
   };
-  const handleNext = () => {
+  const handleNext = (e) => {
+    
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -130,27 +133,35 @@ const PublishSurvey = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    let choices = []
-    selectedAgeRanges.map(choice => choices.push(choice))
-    selectedGenders.map(choice => choices.push(choice))
-    selectedMaritalStatuses.map(choice => choices.push(choice))
-    selectedReligiousAffiliations.map(choice => choices.push(choice))
-    survey.targetAudience = choices
-    AddSuervey(survey)
-    setSelectedAgeRanges([])
-    setSelectedGenders([])
-    setSelectedMaritalStatuses([])
-    setSelectedReligiousAffiliations([])
-    setSurvey({
-      title: '',
-      category: '',
-      question: { text: '', options: ['', ''] }, // Initialize with two empty options
-      duration: '',
-      isPublic: false,
-      targetAudience: '',
-      purpose: '',
-    })
-    setActiveStep(0)
+
+    if (survey.title===''||survey.category=== 'Select Category'||!survey.duration) {
+      setErrorMessage("Required details are missing. Please ensure you've filled out all required fields.");
+      setSnackOpen(true);      
+    }
+    else{
+      let choices = []
+      selectedAgeRanges.map(choice => choices.push(choice))
+      selectedGenders.map(choice => choices.push(choice))
+      selectedMaritalStatuses.map(choice => choices.push(choice))
+      selectedReligiousAffiliations.map(choice => choices.push(choice))
+      survey.targetAudience = choices
+      AddSuervey(survey)
+      setSelectedAgeRanges([])
+      setSelectedGenders([])
+      setSelectedMaritalStatuses([])
+      setSelectedReligiousAffiliations([])
+      setSurvey({
+        title: '',
+        category: 'Select Category',
+        question: { text: '', options: ['', ''] }, // Initialize with two empty options
+        duration: '',
+        isPublic: false,
+        targetAudience: '',
+        purpose: '',
+      })
+      setActiveStep(0)
+    }
+   
     // Here, implement your logic to handle the survey data, such as sending it to a backend server
   };
   const getStepContent = (step) => {
@@ -184,7 +195,7 @@ const PublishSurvey = () => {
                   category: newValue, // Assuming newValue is the string you want to set as category
                 }));
               }}
-              renderInput={(params) => <TextField {...params} label="Select Category" />}
+              renderInput={(params) => <TextField {...params} label={survey.category} value={survey.category} required />}
             />
           </div>
           <div className='form-survey'>
@@ -201,7 +212,7 @@ const PublishSurvey = () => {
         </div>;
       case 1:
         return <div>
-          <div className='form-survey'>
+          <div className='form-survey '>
             <Form.Label className='form-label'>Is Public:</Form.Label>
             <br />
 
@@ -213,9 +224,9 @@ const PublishSurvey = () => {
               inputProps={{ 'aria-label': 'controlled' }}
             />
           </div>
-          {!survey.isPublic && <div className='form-survey'>
+          {!survey.isPublic && <div className='form-survey '>
             <Form.Label className='form-label'>Genders? :</Form.Label>
-            <div className='category-list'>
+            <div className='category-list form-user-selction'>
               {Genders.map(gender => (
                 <label key={gender} className="category-item">
                   <input
@@ -228,7 +239,7 @@ const PublishSurvey = () => {
               ))}
             </div>
             <Form.Label className='form-label'>Age? :</Form.Label>
-            <div className='category-list'>
+            <div className='category-list form-user-selction'>
               {ageRanges.map(range => (
                 <label key={range} className="category-item">
                   <input
@@ -241,7 +252,7 @@ const PublishSurvey = () => {
               ))}
             </div>
             <Form.Label className='form-label'>Personal Status? :</Form.Label>
-            <div className='category-list'>
+            <div className='category-list form-user-selction'>
               {PersonalStatus.map(status => (
                 <label key={status} className="category-item">
                   <input
@@ -254,7 +265,7 @@ const PublishSurvey = () => {
               ))}
             </div>
             <Form.Label className='form-label'>Religions? :</Form.Label>
-            <div className='category-list'>
+            <div className='category-list form-user-selction'>
               {Religions.map(affiliation => (
                 <label key={affiliation} className="category-item">
                   <input
@@ -324,6 +335,19 @@ const PublishSurvey = () => {
 
   return (
     <div className='container-Survey'>
+        <Snackbar
+        open={snackOpen}
+        anchorOrigin={{ vertical: 'top', horizontal: "center" }}
+
+        autoHideDuration={6000}
+        onClose={() => setSnackOpen(false)}
+        message={errorMessage}
+        action={
+          <Button color="inherit" size="small" onClick={() => setSnackOpen(false)}>
+            Close
+          </Button>
+        }
+      />
       <h1>Publish A New Survey</h1>
       <Box sx={{ width: '100%' }}>
         <Stepper activeStep={activeStep}>
@@ -353,6 +377,7 @@ const PublishSurvey = () => {
           </Box>
         </form>
       </Box>
+      
     </div>
   );
 };
