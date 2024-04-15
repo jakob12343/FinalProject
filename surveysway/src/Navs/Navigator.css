@@ -1,6 +1,5 @@
 /* Enhanced Navigation bar styles with image adjustments */
 .navbar {
-  margin-bottom: 0.5rem;
   background: linear-gradient(to right, #ffffff, #0077b5); /* Gradient background */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   position: sticky; /* Fixed position on scroll */

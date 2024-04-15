@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Button, Col, Container, Form, Row, Spinner } from 'react-bootstrap'
+import { Form, Spinner } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { MainContext } from '../MainContext';
 import './cssfiles/Newpass.css'
@@ -32,7 +32,8 @@ const Newpass = () => {
     };
 
     return (
-        <Container>
+        <div className='reset'>
+        <div className='reset-form'>
             {isSUcsses && (
                 <div className='z-index'>
                     <Spinner animation="border" role="status">
@@ -41,38 +42,37 @@ const Newpass = () => {
                     <h3>Password changed. You will soon navigate to the login page.</h3>
                 </div>
             )}
-            <Row className="justify-content-md-center">
-                <Col xs={12} md={6}>
-                    <Form className='form-wrapper' onSubmit={handleSubmit}>
-                        <h2 className='form-title'>Enter Your New Password</h2>
-                        {error && <div className="error-message">{error}</div>}
-                        <Form.Group className="mb-3" controlId="username">
-                            <Form.Label>New Paswword</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="New Paswword"
-                                value={paas1}
-                                onChange={(e) => setPaas1(e.target.value)}
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="phoneNumber">
-                            <Form.Label>Confirm Password</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Confirm Password"
-                                value={pass2}
-                                onChange={(e) => setPaas2(e.target.value)}
-                                required
-                            />
-                        </Form.Group>
-                        <Button variant="primary" type="submit" className='form-button'>
-                            Submit
-                        </Button>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>)
+            <Form className='reset-wrapper' onSubmit={handleSubmit}>
+                <h2 className='reset-title'>Enter Your New Password</h2>
+                {error && <div className="error-message">{error}</div>}
+                <Form.Group className="mb-3" controlId="username">
+                    <Form.Label>New Paswword</Form.Label>
+                    <input
+                        className='reset-input'
+                        type="text"
+                        placeholder="New Paswword"
+                        value={paas1}
+                        onChange={(e) => setPaas1(e.target.value)}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="phoneNumber">
+                    <Form.Label>Confirm Password</Form.Label>
+                    <input
+                        className='reset-input'
+                        type="text"
+                        placeholder="Confirm Password"
+                        value={pass2}
+                        onChange={(e) => setPaas2(e.target.value)}
+                        required
+                    />
+                </Form.Group>
+                <button variant="primary" type="submit" className='form-button'>
+                    Submit
+                </button>
+            </Form>
+        </div>
+        </div>)
 }
 
 export default Newpass

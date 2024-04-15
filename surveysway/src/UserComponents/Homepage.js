@@ -13,6 +13,7 @@ const Homepage = () => {
  useEffect(()=>{
  },[Alldetails])
  
+ 
   return (
     <div> <Tab.Container id="left-tabs-example" defaultActiveKey="first">
     <Row>
@@ -20,7 +21,7 @@ const Homepage = () => {
 
         <Nav  variant="pills" className="nav-pills flex-column">
           <Nav.Item>
-            <Nav.Link className='nav-link' eventKey="first">User Details</Nav.Link>
+            <Nav.Link  eventKey="first">User Details</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link className='nav-link' eventKey="second">Publish Survey</Nav.Link>
@@ -32,8 +33,10 @@ const Homepage = () => {
       </Col>
       <Col sm={9}>
         <Tab.Content className='tab-content'>
-          <Tab.Pane className='tab-pane' eventKey="first">
+          <Tab.Pane  eventKey="first">
+            <div className='flx'>
             <UserDetails className="user-details" data={Alldetails.user}/>
+            </div>
           </Tab.Pane>
           <Tab.Pane className='tab-pane' eventKey="second">
             <PublishSurvey/>

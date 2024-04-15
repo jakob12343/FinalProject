@@ -39,9 +39,9 @@ const Register = async (req, res) => {
 
         }
         const isSucsses = await User.create(newdtata)
-        const surveys = await Survey.find({ author: isSucsses._id })
+        const surveys = await Survey.find({ author: isSucsses._id  })
         const OldSurveys = await NonActive.find({ author: isSucsses._id })
-        const Allsurveys = await Survey.find({ author: { $ne: isSucsses._id } })
+        const Allsurveys = await Survey.find({ author: { $ne: isSucsses._id }, isPublic: true })
         const SharedObject =
         {
             user: isSucsses,
@@ -154,6 +154,7 @@ const SignIn = async (req, res) => {
 }
 const PublishSuervey = async (req, res) => {
     const { survey, Data } = req.body
+    console.log(survey);
     const newSurvey = {
         author: Data._id,
         title: survey.title,
