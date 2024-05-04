@@ -2,6 +2,7 @@ const mongoose =require('mongoose')
 const Survey= new mongoose.Schema(
     {
         author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+        authorUsername: {type: String},
         title: { type: String, required: true },
         category: { type: String, required: true },
         questions: [{

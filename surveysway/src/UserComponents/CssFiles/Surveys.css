@@ -1,0 +1,55 @@
+/* Surveys Component Styles */
+.surveys-accordion {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px; /* Softer shadow for a subtler depth */
+    border-radius: 10px; /* Smooth rounded corners for the entire accordion */
+    overflow: hidden; /* Keeps the content within the borders */
+    margin: 20px auto; /* Centered with consistent spacing */
+    max-width: 960px; /* Max width for better layout on larger screens */
+    border: 1px solid #dee2e6; /* Soft border for definition */
+}
+
+.accordion-item {
+    background-color: #ffffff; /* Clean white background for each accordion item */
+    border-bottom: 1px solid #dee2e6; /* Soft line between items */
+}
+
+.accordion-header {
+    font-size: 1.2rem; /* Properly sized text for accessibility */
+    font-weight: 600; /* Semi-bold for clarity */
+    color: #0077b5; /* Theme blue for headers */
+    padding: 15px 20px; /* Comfortable padding for interaction */
+    background-color: #f8f9fa; /* Slightly off-white background for contrast */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.accordion-body {
+    padding: 20px; /* Ample padding for content separation */
+    line-height: 1.5; /* Balanced line spacing for readability */
+    color: #495057; /* Darker text for better readability */
+}
+
+.text-capitalize {
+    text-transform: capitalize; /* Capitalization for a polished look */
+}
+
+/* Hover and focus styles for accordion headers */
+.accordion-header:focus,
+.accordion-header:hover {
+    background-color: #e2e6ea; /* Lighter blue for hover/focus to indicate interactivity */
+    cursor: pointer; /* Cursor changes to suggest clickable area */
+}
+
+/* Responsive adjustments for a seamless mobile experience */
+@media (max-width: 768px) {
+    .surveys-accordion {
+        margin: 10px; /* Less margin for tight mobile layouts */
+    }
+
+    .accordion-header {
+        padding: 12px 15px; /* Smaller padding for compact areas */
+    }
+
+    .accordion-body {
+        padding: 15px; /* Slightly reduced padding in the body */
+    }
+}

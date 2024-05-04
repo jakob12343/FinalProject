@@ -1,0 +1,79 @@
+/* Votes Component Styles */
+.Votes-container{
+    display: flex;
+    flex-direction: row;
+}
+.Votes-Card {
+    margin: 20px auto; /* Center align and provide vertical spacing */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px; /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners for a polished look */
+    background-color: #ffffff; /* Clean white background */
+}
+
+.Votes-Card.selected-temp {
+    background-color: #ecfde3; 
+}
+.Votes-Card.unselected-temp{
+    background-color: #fde4e3;
+}
+
+.Votes-Card-Body {
+    padding: 20px; /* Sufficient padding within the card */
+}
+
+.Votes-Card-Title {
+    color: #0077b5 !important; /* Consistent theme color for title */
+    font-weight: bold; /* Bold for emphasis */
+    margin-bottom: 10px; /* Space below the title */
+}
+
+.Votes-Card-Text {
+    padding: 10px; /* Padding for touch targets */
+    margin: 5px 0; /* Vertical spacing between options */
+    border-radius: 5px; /* Soft rounded corners for option blocks */
+    cursor: pointer; /* Indicates that the element is interactive */
+    transition: background-color 0.3s ease-in-out; /* Smooth background transition */
+}
+
+.Votes-Card-Text:hover,
+.Votes-Card-Text.selected {
+    background-color: #0e70d2 !important; /* Highlight on hover or selection */
+}
+
+.Votes-ProgressBar {
+    margin-top: 10px; /* Space above the progress bar */
+}
+
+.Votes-Button {
+    width: 100%; /* Full width button for prominence */
+    background-color: #0077b5 !important; /* Theme blue background */
+    color: #ffffff; /* White text for contrast */
+    border: none; /* No border for a cleaner look */
+    margin-top: 15px; /* Space above the button */
+    transition: background-color 0.2s ease-in-out; /* Transition for hover effect */
+}
+
+.Votes-Button:hover {
+    background-color: #0056b3 !important; /* Darker blue on hover for feedback */
+}
+
+.Votes-FontAwesomeIcon {
+    color: #28a745; /* Green color for check icon */
+    margin-left: 10px; /* Space after text */
+}
+
+/* Styling for the xmark icon in case of private surveys */
+.Votes-FontAwesomeIcon[icon="fa-xmark"] {
+    color: #dc3545; /* Red color indicating a private or negative status */
+}
+
+/* Responsive adjustments for better mobile usability */
+@media (max-width: 768px) {
+    .Votes-Card {
+        width: 100%; /* Full width on mobile for better usability */
+    }
+
+    .Votes-Card-Body {
+        padding: 15px; /* Slightly reduced padding */
+    }
+}
