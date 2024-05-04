@@ -74,7 +74,7 @@ const SignUp = () => {
     ];
     const Religions = ["Jewish", "Muslims", "Christian", "Undefined"]
     const Genders = ["Male", "Woman", "Undefined"]
-    const PersonalStatus = ["Singel", "Married", "Divorced", "Widow", "Undefined"]
+    const PersonalStatus = ["Single", "Married", "Divorced", "Widow", "Undefined"]
     const handleChange = (e) => {
         const { name, value } = e.target;
         // Reset username error when user starts typing again

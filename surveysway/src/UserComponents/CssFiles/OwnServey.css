@@ -1,0 +1,67 @@
+/* OwnSurvey Component Specific Styles */
+.Own-Survey-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.Own-Survey-Card {
+    width: 18rem; /* Fixed width */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; /* Consistent shadow */
+    border-radius: 10px; /* Rounded corners */
+    margin: 20px; /* Margin around each card */
+    overflow: hidden; /* Hide overflow for cleaner look */
+    background-color: #f8f9fa; /* Light background */
+}
+
+.Own-Survey-Card-Body {
+    padding: 20px; /* Spacing inside the card */
+}
+
+.Own-Survey-Card-Tex {
+    margin-bottom: 10px; /* Space between text elements */
+    color: #333; /* Dark grey text for readability */
+    font-size: 0.9rem; /* Slightly smaller font size */
+}
+
+.Own-Survey-Card-Title {
+    color: #0077b5 !important; /* Theme color for titles */
+    font-weight: bold; /* Bold for emphasis */
+    margin-bottom: 5px; /* Reduce space below titles */
+}
+
+.Own-Survey-ProgressBar {
+    height: 20px; /* Thicker progress bar for better visibility */
+    border-radius: 5px; /* Rounded corners on progress bar */
+}
+
+.Own-Survey-Button {
+    width: 100%; /* Full width button */
+    background-color: #0077b5 !important ; /* Theme color */
+    color: #fff; /* White text */
+    border: none; /* No border */
+    margin-top: 10px; /* Space above the button */
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px; /* Subtle shadow */
+}
+
+.Own-Survey-FontAwesomeIcon {
+    color: #0077b5 !important; /* Icon color to match the theme */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Hover effects */
+.Own-Survey-Button:hover,
+.Own-Survey-FontAwesomeIcon:hover {
+    opacity: 0.8; /* Slight opacity change on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .Own-Survey-Card {
+        width: 100%; /* Full width on smaller screens */
+        margin: 10px 0; /* Smaller vertical margin */
+    }
+
+    .Own-Survey-Button {
+        padding: 12px 0; /* Larger tap area */
+    }
+}

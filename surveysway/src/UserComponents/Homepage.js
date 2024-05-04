@@ -8,6 +8,7 @@ import { UserContext } from './UserContext';
 import './CssFiles/HomePage.css'
 import { Surveys } from './Surveys';
 import PublishSurvey from './PublishSurvey';
+import UserStatistics from './UserStatistics';
 const Homepage = () => {
   const {Alldetails}=useContext(UserContext)
  useEffect(()=>{
@@ -36,6 +37,7 @@ const Homepage = () => {
           <Tab.Pane  eventKey="first">
             <div className='flx'>
             <UserDetails className="user-details" data={Alldetails.user}/>
+            <UserStatistics OldSurveys={Alldetails.OldSurveys} surveys={Alldetails.surveys}/>
             </div>
           </Tab.Pane>
           <Tab.Pane className='tab-pane' eventKey="second">

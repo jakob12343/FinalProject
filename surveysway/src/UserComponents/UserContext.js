@@ -6,15 +6,16 @@ const UserContext = createContext()
 const UserProvider = ({ children }) => {
     const { usertoken, UserData, Alldetails } = useContext(MainContext)
     const [Data, setData] = useState({})
-    const [OwnServeys, setOwnServeys] = useState([])
-    const [OldSrveys, setOldSrveys] = useState([])
-    const [Surveys, setSurveys] = useState([])
-
+    const [OwnServeys, setOwnServeys] = useState([]);
+    const [OldSrveys, setOldSrveys] = useState([]);
+    const [Surveys, setSurveys] = useState([]);
+const [SurveyResults, setSurveyResults]=useState([]);
     useEffect(() => {
         setData(Alldetails.user)
-        setOldSrveys(Alldetails.OldSurveys ?? [])
-        setSurveys(Alldetails.Allsurveys ?? [])
+        setOldSrveys(Alldetails.OldSurveys ?? []);
+        setSurveys(Alldetails.Allsurveys ?? []);
         setOwnServeys(Alldetails.surveys ?? []);
+        setSurveyResults(Alldetails.results?? []);
         // eslint-disable-next-line
     }, [Alldetails])
     useEffect(() => {
@@ -94,6 +95,7 @@ const UserProvider = ({ children }) => {
         PullOldUserSurveys,
         PullAllSurveys,
         Vote,
+        SurveyResults,
         UserData,
         Data,
         OwnServeys,
