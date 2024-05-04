@@ -42,30 +42,34 @@ const [showBars,setshowBars]=useState(false)
     };
 
     const drawAnswer = (survey, item, i) => {
-        const result = showBars ? calculateVotes(survey, i) : null; // Calculate results only if hasVoted is true
-
+        const isSelected = selectedOption === i;
+        const result = showBars ? calculateVotes(survey, i) : null;
+    
         return (
-            <div key={i} className={`Card-Text ${selectedOption === i ? 'selected' : ''}`} onClick={() => handleVote(i)}>
-                <div>Answer Number {i + 1}: {item}</div>
-                {/* Conditionally render ProgressBar only after voting */}
-                {showBars && <ProgressBar className='ProgressBar' now={result} label={`${result.toFixed(2)}%`} />}
-                {selectedOption === i && <FontAwesomeIcon icon={faCheck} style={{ marginLeft: '10px' }} />}
+            <div className={`Votes-Card ${isSelected && hasVoted ? 'selected-temp' : 'unselected-temp'}`} key={i} onClick={() => handleVote(i)}>
+                <div >Answer Number {i + 1}: {item}</div>
+                {showBars && <ProgressBar className='Votes-ProgressBar' now={result} label={`${ result.toFixed(2)}%`} />}
+                {isSelected && <FontAwesomeIcon icon={faCheck} style={{ marginLeft: '10px' }} />}
             </div>
         );
     };
+    
 
     return (
-        <div>
-            <Card style={{ width: '18rem' }}>
-                <Card.Body>
-                    <Card.Title>{survey.purpose}</Card.Title>
-                    <Card.Title>{survey.title}</Card.Title>
+        <div className='Votes-container'>
+            <Card className='Votes-Card' style={{ width: '18rem' }}>
+                <Card.Body className='Votes-Card-Body'>
+                    <Card.Title className='Votes-Card-Title '>{survey.purpose}</Card.Title>
+                    <Card.Title className='Votes-Card-Title '>{survey.title}</Card.Title>
                     <div>question: {survey.questions[0].text}</div>
                     <div>answers: {survey.questions[0].options.map((item, i) => drawAnswer(survey, item, i))}</div>
-                    {hasVoted && <Button onClick={submitVote}>Save Vote</Button>}
-                    <Card.Text>
+                    {hasVoted && <Button className='Votes-Button' onClick={submitVote}>Save Vote</Button>}
+                    <Card.Text className='Card-Text'>
+                       published by {survey.authorUsername }
+                    </Card.Text>
+                    <Card.Text className='Card-Text'>
                         Public?: 
-                        {survey.isPublic ? <FontAwesomeIcon icon={faCheck} style={{ marginLeft: '10px' }} /> : <FontAwesomeIcon icon={faXmark} style={{ marginLeft: '10px' }} />}
+                        {survey.isPublic ? <FontAwesomeIcon className='Votes-FontAwesomeIcon' icon={faCheck} style={{ marginLeft: '10px' }} /> : <FontAwesomeIcon icon={faXmark} style={{ marginLeft: '10px' }} />}
                     </Card.Text>
                 </Card.Body>
             </Card>

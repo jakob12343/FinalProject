@@ -1,0 +1,63 @@
+/* NonActive Component Styles */
+.Non-Active-Container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.Non-Active-Card {
+    width: 18rem; /* Fixed width similar to other survey cards */
+    margin: 20px auto; /* Center align and provide spacing */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px; /* Consistent subtle shadow */
+    border-radius: 10px; /* Smooth rounded corners */
+    background-color: #f8f9fa; /* Light background color */
+}
+.non-active-section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.Non-Active-Card-Body {
+    padding: 20px; /* Adequate padding within the card */
+}
+
+.Non-Active-Card-Title {
+    color: #0077b5 !important; /* Blue color for headings */
+    font-weight: bold; /* Bold font for emphasis */
+    margin-bottom: 5px; /* Space below the title */
+}
+
+.Non-Active-Card-Tex {
+    color: #333; /* Dark color for better readability */
+    font-size: 0.9rem; /* Font size for consistency */
+    margin-bottom: 10px; /* Space between text elements */
+}
+
+/* Style for displaying the 'Public?' status with icons */
+.Non-Active-FontAwesomeIcon {
+    margin-left: 10px; /* Space before the icon */
+    cursor: pointer; /* Pointer cursor to suggest interactivity */
+    color: #28a745; /* Color for the check icon */
+}
+
+.Non-Active-FontAwesomeIcon[icon="fa-xmark"] {
+    color: #dc3545; /* Color for the xmark icon */
+}
+
+/* Adjustments for better readability and spacing for answers */
+.Non-Active-Answer {
+    padding-left: 20px; /* Indent answers for clarity */
+    margin-bottom: 5px; /* Spacing between answer items */
+    list-style-type: none; /* Remove list bullets */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .Non-Active-Card {
+        width: 100%; /* Full width on smaller screens */
+        margin: 10px 0; /* Reduce vertical margin */
+    }
+
+    .Non-Active-Card-Body {
+        padding: 15px; /* Slightly smaller padding */
+    }
+}

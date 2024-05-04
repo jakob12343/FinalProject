@@ -1,0 +1,54 @@
+/* OtherSurveys Component Styles */
+/* Base settings for survey display area */
+.OtherSurveys-survey-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Styling for individual survey entries, likely containing the Votes component */
+.OtherSurveys-survey-item {
+    width: 100%; /* Full width for better responsiveness */
+    max-width: 600px; /* Max width to keep the layout manageable */
+    margin-bottom: 20px; /* Space between surveys */
+    background-color: #f8f9fa; /* Light background for visibility */
+    padding: 15px; /* Padding around content */
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 4px; /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners for a softer look */
+}
+
+/* Button styling consistent with theme */
+.OtherSurveys-Button {
+    width: auto; /* Auto width based on content */
+    padding: 10px 20px; /* Comfortable padding */
+    font-size: 1rem; /* Readable font size */
+    color: #ffffff; /* White text for contrast */
+    background-color: #0077b5  !important; /* Theme blue background */
+    border: none; /* No border for a cleaner look */
+    cursor: pointer; /* Cursor to indicate clickable */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px; /* Matching shadow for consistency */
+    margin-top: 20px; /* Space above the button */
+    transition: background-color 0.2s ease-in-out; /* Smooth transition for hover */
+}
+
+.OtherSurveys-Button:hover {
+    background-color: #0056b3 !important; /* Slightly darker on hover for feedback */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .OtherSurveys-survey-container {
+        padding: 10px;
+    }
+
+    .OtherSurveys-survey-item {
+        padding: 10px;
+    }
+
+    .OtherSurveys-Button {
+        padding: 8px 16px; /* Smaller padding for smaller screens */
+    }
+}
