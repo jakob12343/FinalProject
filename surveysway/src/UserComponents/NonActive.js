@@ -7,7 +7,7 @@ import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
 import './CssFiles/NonActive.css'
 import Votes from './Votes'
 const NonActive = () => {
-    const {  OldSrveys,Alldetails} = useContext(UserContext)
+    const {  OldSrveys,historyVoetes} = useContext(UserContext)
    
     useEffect(() => {
         // eslint-disable-next-line
@@ -24,8 +24,8 @@ const NonActive = () => {
             <Card.Title className='Non-Active-Card-Title'>Survays You Voted</Card.Title>
 
             <div className='non-active-section'>
-            {Alldetails.voteHistory.map((survey, index) => (
-                <Votes index={index} survey={survey} />
+            {historyVoetes.map((survey, index) => (
+                <Votes index={index} survey={survey} key={index}/>
             ))}
             </div>
             <Card.Title className='Non-Active-Card-Title'>Your Old Surveys</Card.Title>

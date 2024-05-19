@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const Validations = require('../Validations/CreateVal')
 const tokens = require('./Localfiles/Tokens')
 const NonActive = require('../DAL/Schemas/NonActive')
-const Calcs=require('./Calcs')
+const Calcs = require('./Calcs')
 const Register = async (req, res) => {
     const {
         username,
@@ -39,7 +39,7 @@ const Register = async (req, res) => {
 
         }
         const isSucsses = await User.create(newdtata)
-        const surveys = await Survey.find({ author: isSucsses._id  })
+        const surveys = await Survey.find({ author: isSucsses._id })
         const OldSurveys = await NonActive.find({ author: isSucsses._id })
         const Allsurveys = await Survey.find({ author: { $ne: isSucsses._id }, isPublic: true })
         const SharedObject =
@@ -53,7 +53,7 @@ const Register = async (req, res) => {
         tokens.userTokens.push(token)
         const { iat, exp } = jwt.decode(token)
 
-        res.status(200).json({ token, mode: "UserHomePage", iat, exp,userdetails: SharedObject });
+        res.status(200).json({ token, mode: "UserHomePage", iat, exp, userdetails: SharedObject });
 
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -124,9 +124,8 @@ const SignIn = async (req, res) => {
                 const OldSurveys = await NonActive.find({ author: isSucsses._id })
                 const Allsurveys = await Survey.find({ author: { $ne: isSucsses._id }, isPublic: true })
                 const voteHistory = await Survey.find({ 'responses.user': isSucsses._id });
-
-           const results= await Calcs.CalcCwtwgories(OldSurveys,surveys);
-
+                const results = await Calcs.CalcCwtwgories(OldSurveys, surveys);
+                const exclusiveSurveys =await Calcs.PullSurveysByProfile(isSucsses)
                 const SharedObject =
                 {
                     user: isSucsses,
@@ -134,7 +133,8 @@ const SignIn = async (req, res) => {
                     Allsurveys,
                     surveys,
                     results,
-                    voteHistory
+                    voteHistory,
+                    exclusiveSurveys
                 }
                 tokens.userTokens.push(token)
                 const { iat, exp } = jwt.decode(token)
@@ -162,7 +162,7 @@ const PublishSuervey = async (req, res) => {
     const { survey, Data } = req.body
     const newSurvey = {
         author: Data._id,
-        authorUsername:Data.username,
+        authorUsername: Data.username,
         title: survey.title,
         category: survey.category,
         questions: survey.question,
