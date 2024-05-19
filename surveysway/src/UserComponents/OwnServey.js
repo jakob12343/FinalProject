@@ -15,7 +15,7 @@ import {
 } from 'chart.js';
 
 const OwnSurvey = () => {
-  const { DeletTargetSurvey, OwnServeys,SurveyResults } = useContext(UserContext);
+  const { DeletTargetSurvey, OwnServeys, SurveyResults } = useContext(UserContext);
 
   const calculateVotes = (survey, optionIndex) => {
     let count = 0;
@@ -29,36 +29,30 @@ const OwnSurvey = () => {
     let totalResponses = survey.responses.length;
     return totalResponses > 0 ? (count / totalResponses) * 100 : 0;
   };
- const GetPieCart=(survey)=>{
-  let array=[];
-  for (let index = 0; index < SurveyResults.length; index++) {
-    const element = SurveyResults[index];
-    if (element.surveyId===survey._id) {
-      array=element.results
+  const GetPieCart = (survey) => {
+    let array = [];
+    for (let index = 0; index < SurveyResults.length; index++) {
+      const element = SurveyResults[index];
+      if (element.surveyId === survey._id) {
+        array = element.results
+      }
+
     }
-    
+    const data = {
+      labels: [
+        "Single", "Married", "Divorced", "Widow",
+        "Male", "Woman", "Jewish", "Muslims", "Christian", "Undefined"
+      ],
+      datasets: [{
+        data: array,
+        backgroundColor: backgroundColors,
+        hoverBackgroundColor: backgroundColors,
+        borderColor: 'white', // Borders between sections
+        borderWidth: 2
+      }]
+    };
+    return data
   }
-
-  
-    
-  
-  
-
-const data = {
-  labels: [
-      "Single", "Married", "Divorced", "Widow", 
-      "Male", "Woman", "Jewish", "Muslims", "Christian", "Undefined"
-  ],
-  datasets: [{
-      data: array, 
-      backgroundColor: backgroundColors,
-      hoverBackgroundColor: backgroundColors,
-      borderColor: 'white', // Borders between sections
-      borderWidth: 2
-  }]
-};
-return data
- }
   const backgroundColors = [
     '#FF6384', // Single - Soft Red
     '#36A2EB', // Married - Soft Blue
@@ -70,10 +64,10 @@ return data
     '#4D5360', // Muslims - Dark Grey
     '#E7E9ED', // Christian - Light Grey
     '#C9CBCF'  // Undefined - Medium Grey
-];
+  ];
 
 
-  
+
   ChartJS.register(
     Tooltip, Legend, ArcElement, CategoryScale, LinearScale
   );
@@ -101,7 +95,7 @@ return data
       {OwnServeys.map((survey, index) => (
         <div key={index}>
           <Card className='Own-Survey-Card' style={{ width: '18rem' }}>
-            <Pie data= {GetPieCart(survey)} />
+            <Pie data={GetPieCart(survey)} />
 
             <Card.Body className='Own-Survey-Card-Body'>
               <Card.Title className='Own-Survey-Card-Title'>{survey.purpose}</Card.Title>

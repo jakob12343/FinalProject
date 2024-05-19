@@ -9,13 +9,17 @@ const UserProvider = ({ children }) => {
     const [OwnServeys, setOwnServeys] = useState([]);
     const [OldSrveys, setOldSrveys] = useState([]);
     const [Surveys, setSurveys] = useState([]);
-const [SurveyResults, setSurveyResults]=useState([]);
+    const [SurveyResults, setSurveyResults] = useState([]);
+    const [historyVoetes, setHistoryVoetes]=useState([]);
+    const [SurveysByprofile, setSurveysByprofile]=useState([]);
     useEffect(() => {
         setData(Alldetails.user)
         setOldSrveys(Alldetails.OldSurveys ?? []);
         setSurveys(Alldetails.Allsurveys ?? []);
         setOwnServeys(Alldetails.surveys ?? []);
-        setSurveyResults(Alldetails.results?? []);
+        setSurveyResults(Alldetails.results ?? []);
+        setHistoryVoetes(Alldetails.voteHistory??[]);
+        setSurveysByprofile(Alldetails.exclusiveSurveys??[]);
         // eslint-disable-next-line
     }, [Alldetails])
     useEffect(() => {
@@ -96,12 +100,14 @@ const [SurveyResults, setSurveyResults]=useState([]);
         PullAllSurveys,
         Vote,
         SurveyResults,
+        historyVoetes,
         UserData,
         Data,
         OwnServeys,
         OldSrveys,
         Surveys,
-        Alldetails
+        Alldetails,
+        SurveysByprofile
     }
 
 
