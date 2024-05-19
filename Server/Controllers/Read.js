@@ -49,6 +49,7 @@ const PullAllSurveys = async (req, res) => {
     
     else res.status(409).json({ message: "invalid user token" })
 }
+
 const PullUserSurveys = async (req, res) => {
     const { Username, usertoken } = req.query
     const IsExist = await Validations.CheckUser(usertoken)
