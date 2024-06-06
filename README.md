@@ -14,6 +14,7 @@ SurveySway is a comprehensive platform for creating, managing, and analyzing sur
 - [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
 - [License](#license)
+- [Personal Addendum](#personal-addendum)
 
 ## Project Overview
 
@@ -108,16 +109,14 @@ The main objective of SurveySway is to provide an efficient and reliable way to 
    npm install
    ```
 
-3. Set up the database:
+3. Set up the database and server:
+   - Navigate to the `Server` folder.
+   - Use nodemon to run the server and wait to see "Server Running on port 3000" on the console:
 
-   - Ensure MongoDB is running.
-   - Configure database connection in `config.js`.
-
-4. Start the application:
-
-   ```bash
-   npm start
-   ```
+     ```bash
+     cd Server
+     nodemon
+     ```
 
 ## Usage
 
@@ -203,14 +202,46 @@ The main objective of SurveySway is to provide an efficient and reliable way to 
 - Sponsored surveys with tags.
 - Additional features as needed.
 
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
 
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
+## Personal Addendum
+
+Thank you for taking the time to explore SurveySway. This project has been a labor of love, combining my passion for creating user-friendly applications with the challenge of solving real-world problems. 
+
+### Behind the Project
+
+Developing SurveySway has been a journey filled with learning, creativity, and collaboration. The primary goal was to create a platform that not only makes survey creation and management easy but also ensures data accuracy and user satisfaction. Every feature has been thoughtfully designed with the end-user in mind, and I'm incredibly proud of what has been achieved.
+
+### Future Aspirations
+
+As you use SurveySway, you may come across ideas or features that you think could enhance the platform. I encourage you to share your thoughts and contribute to its growth. This project is not just about creating a tool; it's about building a community that values feedback and continuous improvement.
+
+### Get in Touch
+
+If you have any questions, suggestions, or just want to connect, feel free to reach out. Your feedback is invaluable, and I'm always eager to hear from fellow developers, users, and enthusiasts.
+
+### Special Thanks
+
+A special thank you to everyone who has supported me throughout this project. From mentors and peers to the open-source community, your guidance and resources have been instrumental in bringing SurveySway to life.
+
 ---
 
-Thank you for taking the time to explore SurveySway. This project has been a labor of love, combining my passion for creating user-friendly applications with the challenge of solving real-world problems.
+Thank you for being a part of this journey. Together, we can make SurveySway a leading platform for survey creation and analysis.
 
-Behind the Project
-Developing SurveySway has been a journey filled with learning, creativity, and collaboration. The primary goal was to create a platform that not only makes survey creation and management easy but also ensures data accuracy and user satisfaction. Every feature has been thoughtfully designed with the end-user in mind, and I'm incredibly proud of what has been achieved.
+Warm regards,
+
+Jakob
+
+---
