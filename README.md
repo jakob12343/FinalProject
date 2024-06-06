@@ -98,7 +98,7 @@ The main objective of SurveySway is to provide an efficient and reliable way to 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/SurveySway.git
+   git clone https://github.com/jakob12343/SurveySway.git
    cd SurveySway
    ```
 
@@ -210,4 +210,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ---
 
-This README file provides an extensive overview of your project, covering all essential details for setup, usage, and contribution.
+Thank you for taking the time to explore SurveySway. This project has been a labor of love, combining my passion for creating user-friendly applications with the challenge of solving real-world problems.
+
+Behind the Project
+Developing SurveySway has been a journey filled with learning, creativity, and collaboration. The primary goal was to create a platform that not only makes survey creation and management easy but also ensures data accuracy and user satisfaction. Every feature has been thoughtfully designed with the end-user in mind, and I'm incredibly proud of what has been achieved.
