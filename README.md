@@ -1,7 +1,3 @@
-Based on the provided code snippets, here is the revised and detailed README file including the corrected API endpoints and database schemas:
-
----
-
 # SurveySway
 
 SurveySway is a comprehensive platform for creating, managing, and analyzing surveys. This project aims to address the challenges of constructing effective and reliable surveys by providing a robust system that focuses on user experience and data analysis.
