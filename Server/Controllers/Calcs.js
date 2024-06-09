@@ -3,7 +3,8 @@ const Survey = require('../DAL/Schemas/SurveySchema')
 const Validations = require('../Validations/CreateVal')
 const NonActive = require('../DAL/Schemas/NonActive')
 
-const CalcCwtwgories = async (oldSurveys, ownSurveys) => {
+const CalcCwtwgories = async ( ownSurveys) => {
+    
     const categories = [
         "Single", "Married", "Divorced", "Widow",
         "Male", "Woman", "Jewish", "Muslims", "Christian"
@@ -16,6 +17,7 @@ const CalcCwtwgories = async (oldSurveys, ownSurveys) => {
         const element = ownSurveys[index];
         for (let j = 0; j < element.responses.length; j++) {
             const response = element.responses[j];
+            console.log(response);
             let user = await User.findById(response.user);
             users.push(user);
             if (user.gender && user.gender !== "Undefined") {

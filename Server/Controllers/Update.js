@@ -15,7 +15,6 @@ const UpdateUserDetails=async(req,res)=>{
 }
 const EditPasword=async(req,res)=>{
 const {newPassword, username}=req.body
-
 let data= await User.findOne({username})
 data.password=newPassword
 const newData = await Validations.EncrypPassword(data)
