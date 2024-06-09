@@ -1,64 +1,85 @@
-// Formexampl.js
 import { useContext, useState } from 'react';
 import { MainContext } from '../MainContext';
-import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 import img from '../sign_in_img.jpeg'
 import './cssfiles/Form.css'
-import { TextField } from '@mui/material';
+import { Button, IconButton, Snackbar, TextField } from '@mui/material';
 
 function Formexampl() {
     const { SignAsGuest, SignIn } = useContext(MainContext);
-    const [password, setPassword] = useState("")
-    const [username, setUserName] = useState("")
-    const [passError, setError] = useState("")
-    const [userError, setUserError] = useState("")
-    const Navigate = useNavigate()
+    const [password, setPassword] = useState("");
+    const [username, setUserName] = useState("");
+    const [passError, setError] = useState("");
+    const [userError, setUserError] = useState("");
+    const Navigate = useNavigate();
     const check = (event) => {
         event.preventDefault();
         SignAsGuest();
-        Navigate('/guest')
-
+        Navigate('/guest');
     };
+    const [open, setOpen] = useState(false);
+    const handleClick = () => {
+        setOpen(true);
+    };
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+    const action = (
+        <>
+            <Button color="primary" size="small" onClick={handleClose}>
+                Close
+            </Button>
+            <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+            >
+            </IconButton>
+        </>
+    );
     const ResetPasword = (event) => {
         event.preventDefault();
         Navigate('/ResetPasword')
     }
     const GetUserName = (event) => {
-        event.preventDefault()
-        setUserName(event.target.value)
+        event.preventDefault();
+        setUserName(event.target.value);
     }
     const GetPassworde = (event) => {
-        event.preventDefault()
-        setPassword(event.target.value)
+        event.preventDefault();
+        setPassword(event.target.value);
     }
     const Submit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
         if (password && username) {
             const regex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
             const passCheck = regex.test(password);
             if (passCheck) {
                 const inSucsses = await SignIn({ password, username })
                 if (inSucsses) {
                     if (inSucsses === "incurrect password") {
-                        setError(inSucsses)
-
+                        await setError(inSucsses)
+                        handleClick()
                     }
-                    else setUserError(inSucsses)
+                    else {
+                        await setUserError(inSucsses)
+                        handleClick()
+                    }
                 }
                 else {
                     Navigate('/UserHomePage');
-
                 }
-
             } else {
                 console.log("Password format is incorrect");
             }
         } else {
             console.log("Password or UserName is missing");
         }
-
     };
     const SignUp = () => {
         Navigate('/SignUp')
@@ -74,11 +95,14 @@ function Formexampl() {
                     className='form-input'
                     onChange={GetUserName}
                     type="text" />
-
                 {userError && (
-                    <Form.Control.Feedback className='error-message' type="invalid">
-                        {userError}
-                    </Form.Control.Feedback>
+                    <Snackbar
+                        open={open}
+                        autoHideDuration={6000}
+                        onClose={handleClose}
+                        message={userError}
+                        action={action}
+                    />
                 )}
                 <TextField
                     id="standard-basic 1"
@@ -88,17 +112,21 @@ function Formexampl() {
                     className='form-input'
                     onChange={GetPassworde}
                     type="password"
-                     />
+                />
                 {passError && (
-                    <Form.Control.Feedback className='error-message' type="invalid">
-                        {passError}
-                    </Form.Control.Feedback>
+                    <Snackbar
+                        open={open}
+                        autoHideDuration={6000}
+                        onClose={handleClose}
+                        message={passError}
+                        action={action}
+                    />
                 )}
                 <div className='buttons'>
                     <button className='form-button btn-1' onClick={Submit} >Submit</button>
                     <button className='form-button' onClick={SignUp} >Sign Up</button>
                 </div>
-                <a className='mr-1' href="/" onClick={check}>Login as guest</a>
+                <a id='check' className='mr-1' href="/" onClick={check}>Login as guest</a>
                 <a href="/" onClick={ResetPasword}>Forgot Password ? </a>
 
 

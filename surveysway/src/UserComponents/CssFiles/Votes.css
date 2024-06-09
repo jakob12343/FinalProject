@@ -13,10 +13,19 @@
 .Votes-Card.selected-temp {
     background-color: #ecfde3; 
 }
+.Votes-Card.selected-temp:hover{
+    cursor: pointer;
+    background-color: #e1ffd2; 
+
+}
 .Votes-Card.unselected-temp{
     background-color: #fde4e3;
 }
+.Votes-Card.unselected-temp:hover{
+    cursor: pointer;
+    background-color: #fcd8d7;
 
+}
 .Votes-Card-Body {
     padding: 20px; /* Sufficient padding within the card */
 }

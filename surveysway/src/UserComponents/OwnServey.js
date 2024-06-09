@@ -91,7 +91,7 @@ const OwnSurvey = () => {
 
   return (
     <div className='Own-Survey-container'>
-
+                {OwnServeys.length===0&& <h3>You Have Not Posted Any Survey </h3>}
       {OwnServeys.map((survey, index) => (
         <div key={index}>
           <Card className='Own-Survey-Card' style={{ width: '18rem' }}>

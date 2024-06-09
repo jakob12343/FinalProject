@@ -9,6 +9,7 @@ import './CssFiles/HomePage.css'
 import { Surveys } from './Surveys';
 import PublishSurvey from './PublishSurvey';
 import UserStatistics from './UserStatistics';
+import Search from '../MajorComponents/Search';
 const Homepage = () => {
   const {Alldetails}=useContext(UserContext)
  useEffect(()=>{
@@ -30,6 +31,9 @@ const Homepage = () => {
           <Nav.Item>
             <Nav.Link className='nav-link' eventKey="third">Surveys Managments</Nav.Link>
           </Nav.Item>
+          <Nav.Item>
+            <Nav.Link  eventKey="fourth">Search Survays</Nav.Link>
+          </Nav.Item>
         </Nav>
       </Col>
       <Col sm={9}>
@@ -45,6 +49,9 @@ const Homepage = () => {
           </Tab.Pane>
           <Tab.Pane className='tab-pane' eventKey="third">
            <Surveys/>
+          </Tab.Pane>
+          <Tab.Pane className='tab-pane' eventKey="fourth">
+            <Search/>
           </Tab.Pane>
         </Tab.Content>
       </Col>
