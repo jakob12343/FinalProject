@@ -4,7 +4,6 @@ const Validations = require('../Validations/CreateVal')
 const NonActive = require('../DAL/Schemas/NonActive')
 
 const CalcCwtwgories = async ( ownSurveys) => {
-    
     const categories = [
         "Single", "Married", "Divorced", "Widow",
         "Male", "Woman", "Jewish", "Muslims", "Christian"
@@ -32,17 +31,11 @@ const CalcCwtwgories = async ( ownSurveys) => {
             if (!user.gender || user.gender === "Undefined" && !user.religion || user.religion === "Undefined" && !user.maritalStatus || user.maritalStatus === "Undefined") {
                 votesPerCat[9]++;
             }
-
         }
         finalResults.push({ surveyId: element._id, results: votesPerCat })
         votesPerCat = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
     }
     return finalResults;
-
-
-
-
 }
 const PullSurveysByProfile = async (user) => {
     const excludeAuthorId = user._id

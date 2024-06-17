@@ -39,6 +39,7 @@ app.get('/PullUserSurveys', (req,res)=>{Get.PullUserSurveys(req,res)})
 app.get('/PullOldUserSurveys', (req,res)=>{Get.PullOldUserSurveys(req,res)})
 app.get('/PullAllSurveys', (req,res)=>{Get.PullAllSurveys(req,res)})
 app.post('/GetSurveys', (req,res)=>{Create.GetSurveys(req,res)})
+app.get('/ReadPublicSurveys', (req,res)=>{Get.ReadPublicSurveys(req,res)})
 //Updates
 app.put('/UpdateUserDetails', (req,res)=>{Update.UpdateUserDetails(req,res)})
 app.put('/Vote', (req,res)=>{Update.Vote(req,res)})
