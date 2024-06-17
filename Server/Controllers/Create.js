@@ -158,7 +158,7 @@ const SignIn = async (req, res) => {
     }
 }
 const PublishSuervey = async (req, res) => {
-    const { survey, Data } = req.body
+    const { survey, Data } = req.body;
     const newSurvey = {
         author: Data._id,
         authorUsername: Data.username,
@@ -169,10 +169,9 @@ const PublishSuervey = async (req, res) => {
         isPublic: survey.isPublic,
         targetAudience: survey.targetAudience,
         purpose: survey.purpose,
-
     }
-    const IsSucsses = await Survey.create(newSurvey)
-    res.status(200).json({ status: " ok" })
+    const IsSucsses = await Survey.create(newSurvey);
+    res.status(200).json({ status: " ok" });
 }
 const GetSurveys=async(req,res)=>{
     console.log(req.body);

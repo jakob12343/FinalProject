@@ -12,7 +12,8 @@ import Newpass from './Login/Newpass';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigator from './Navs/Navigator';
 import { UserProvider } from './UserComponents/UserContext';
-import {  GuestProvider } from './GusetComponents/GusetContext';
+import { GuestProvider } from './GusetComponents/GusetContext';
+import AboutUs from './MajorComponents/AboutUs';
 // import Footer from './Navs/Footer';
 
 function App() {
@@ -20,25 +21,25 @@ function App() {
     <div>
       <MainProvider>
         <GuestProvider>
-        <UserProvider>
+          <UserProvider>
 
-          <Router>
-            <Navigator />
+            <Router>
+              <Navigator />
 
-            <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/UserHomePage" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
-              <Route path='/guest' element={<GuestPage />} />
-              <Route path='/SignUp' element={<SignUp />} />
-              <Route path='/ResetPasword' element={<ResetPasword />} />
-              <Route path='/CreateNewPassword' element={<Newpass />} />
+              <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/UserHomePage" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
+                <Route path='/guest' element={<GuestPage />} />
+                <Route path='/SignUp' element={<SignUp />} />
+                <Route path='/ResetPasword' element={<ResetPasword />} />
+                <Route path='/CreateNewPassword' element={<Newpass />} />
+                <Route path='/about' element={<AboutUs/>}></Route>
+                {/* ... other routes */}
+              </Routes>
+              {/* <Footer/> */}
+            </Router>
 
-              {/* ... other routes */}
-            </Routes>
-            {/* <Footer/> */}
-          </Router>
-
-        </UserProvider>
+          </UserProvider>
         </GuestProvider>
       </MainProvider>
     </div>
