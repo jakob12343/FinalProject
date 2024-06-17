@@ -37,6 +37,7 @@ app.get('/PullUserSurveys', (req, res) => { Get.PullUserSurveys(req, res); });
 app.get('/PullOldUserSurveys', (req, res) => { Get.PullOldUserSurveys(req, res); });
 app.get('/PullAllSurveys', (req, res) => { Get.PullAllSurveys(req, res); });
 app.post('/GetSurveys', (req, res) => { Create.GetSurveys(req, res); });
+app.get('/ReadPublicSurveys', (req,res)=>{Get.ReadPublicSurveys(req,res)})
 // Updates
 app.put('/UpdateUserDetails', (req, res) => { Update.UpdateUserDetails(req, res); });
 app.put('/Vote', (req, res) => { Update.Vote(req, res); });
@@ -44,7 +45,7 @@ app.put('/EditPasword', (req, res) => { Update.EditPasword(req, res); });
 // Deletes
 app.delete('/DeletTargetSurvey', (req, res) => { Delete.DeleteSurvey(req, res); });
 
-// The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
+//The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../surveysway/build/index.html'));
 });
