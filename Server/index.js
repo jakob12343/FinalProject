@@ -20,7 +20,7 @@ app.use(cors());
 DataBase();
 
 // Serve static files from the React app
-//app.use(express.static(path.join(__dirname, '../surveysway/build')));
+app.use(express.static(path.join(__dirname, '../surveysway/build')));
 
 //////////////// CRUD////////////////
 // Posts
@@ -45,10 +45,10 @@ app.put('/EditPasword', (req, res) => { Update.EditPasword(req, res); });
 // Deletes
 app.delete('/DeletTargetSurvey', (req, res) => { Delete.DeleteSurvey(req, res); });
 
-// The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../surveysway/build/index.html'));
-// });
+//The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../surveysway/build/index.html'));
+});
 
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
