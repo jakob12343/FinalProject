@@ -10,12 +10,16 @@ const DataBase = require('./DAL/DB');
 const cors = require('cors');
 require('dotenv').config();
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = express();
 
 // middlewares
 app.use(express.json());
 app.use(cors());
+app.use(cors({
+  origin: 'https://survays-server.vercel.app', // Change to your actual frontend URL
+  optionsSuccessStatus: 200,
+}));
 // activate DB
 DataBase();
 
