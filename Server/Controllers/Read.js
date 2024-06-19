@@ -76,7 +76,6 @@ const ReadPublicSurveys=async(req,res)=>{
 try {
     const surveys = await Survey.find({  isPublic: true })
     res.status(200).json(surveys)
-    console.log(surveys);
 
 } catch (error) {
     res.status(404).json({message: "error fatching surveys"})
