@@ -16,10 +16,7 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(cors());
-app.use(cors({
-  origin: 'https://final-project-server-tau.vercel.app', // Change to your actual frontend URL
-  optionsSuccessStatus: 200,
-}));
+
 // activate DB
 DataBase();
 
