@@ -44,7 +44,7 @@ app.put('/Vote', (req, res) => { Update.Vote(req, res); });
 app.put('/EditPasword', (req, res) => { Update.EditPasword(req, res); });
 // Deletes
 app.delete('/DeletTargetSurvey', (req, res) => { Delete.DeleteSurvey(req, res); });
-
+app.get('/Check', (req,res)=>{res.status(200).json({messege: "this is check from vercel"})})
 
 
 app.listen(port, () => {
