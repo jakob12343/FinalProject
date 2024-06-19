@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(cors({
-  origin: 'https://survays-server.vercel.app', // Change to your actual frontend URL
+  origin: 'https://final-project-server-tau.vercel.app', // Change to your actual frontend URL
   optionsSuccessStatus: 200,
 }));
 // activate DB
