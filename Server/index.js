@@ -9,7 +9,7 @@ const Middlewares = require('./Controllers/MiddleWares');
 const DataBase = require('./DAL/DB');
 require('dotenv').config();
 const corsOptions = {
-  origin: 'https://final-project-client-smoky.vercel.app', // Your frontend URL
+  origin: 'https://final-project-client-3lymdk5e3-jakob12343s-projects.vercel.app/', // Your frontend URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Allow credentials if needed
   optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
