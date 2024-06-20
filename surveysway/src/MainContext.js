@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from 'axios';
 import { ValidateToken } from "./Validations/ValidateToken";
+import { apiUrl } from "./env";
 const MainContext = createContext();
 
 const MainProvider = ({ children }) => {
@@ -12,7 +13,7 @@ const MainProvider = ({ children }) => {
     const [exp, setExp] = useState()
     const SignAsGuest = async () => {
         try {
-            const url = 'http://localhost:3000/GetguestToken';
+            const url = `${apiUrl}/GetguestToken`;
             const response = await axios.post(url, {});
             setusertoken(response.data.token); // Assuming the token is in response.data
             setUserMode(response.data.mode)
@@ -24,7 +25,7 @@ const MainProvider = ({ children }) => {
     };
    
     const ForgotPassword = async (user) => {
-        const url = `http://localhost:3000/ForgotPassword?username=${user.user}&phone=${user.phoneNumber}`;
+        const url = `${apiUrl}/ForgotPassword?username=${user.user}&phone=${user.phoneNumber}`;
         let status
         try {
             await axios.get(url)
@@ -36,13 +37,13 @@ const MainProvider = ({ children }) => {
         return status
     }
     const EditPasword = async (newPassword) => {
-        const url = 'http://localhost:3000/EditPasword';
+        const url = `${apiUrl}/EditPasword`;
         await axios.put(url, { username: Username, newPassword });
 
     }
     const Register = async (user,newuser) => {
         try {
-            const url = 'http://localhost:3000/Register';
+            const url = `${apiUrl}/Register`;
             const response = await axios.post(url, user);
             setusertoken(response.data.token); // Assuming the token is in response.data
             setUserMode(response.data.mode)
@@ -62,7 +63,7 @@ const MainProvider = ({ children }) => {
     const SignIn = async (user) => {
         try {
 
-            const url = 'http://localhost:3000/SignIn';
+            const url = `${apiUrl}/SignIn`;
             const response = await axios.post(url, user);
             setusertoken(response.data.token); // Assuming the token is in response.data
             setUserMode(response.data.mode)
@@ -79,7 +80,7 @@ const MainProvider = ({ children }) => {
     }
     const PullUserDetails = async () => {
         try {
-            const url = 'http://localhost:3000/PullUserDetails';
+            const url = `${apiUrl}/PullUserDetails`;
             const response = await axios.post(url, { usertoken: usertoken, mode: UserMode });
             setUserData(response)
         } catch (error) {

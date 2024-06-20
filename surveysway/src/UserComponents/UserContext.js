@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { MainContext } from "../MainContext";
 import axios from "axios";
+import { apiUrl } from "../env";
 
 const UserContext = createContext()
 const UserProvider = ({ children }) => {
@@ -28,7 +29,7 @@ const UserProvider = ({ children }) => {
 
     const PullUserSurveys = async () => {
 
-        const url = `http://localhost:3000/PullUserSurveys?Username=${UserData.username}&usertoken=${usertoken}`;
+        const url = `${apiUrl}/PullUserSurveys?Username=${UserData.username}&usertoken=${usertoken}`;
         const data = await axios.get(url)
         setOwnServeys(data.data)
 
@@ -43,7 +44,7 @@ const UserProvider = ({ children }) => {
 
     const PullOldUserSurveys = async () => {
         // Example URL, adjust as needed
-        const url = `http://localhost:3000/PullOldUserSurveys?Username=${UserData.username}&usertoken=${usertoken}`;
+        const url = `${apiUrl}/PullOldUserSurveys?Username=${UserData.username}&usertoken=${usertoken}`;
         const response = await axios.get(url);
         // Assuming response.data contains your surveys
         setSurveys(response.data);
@@ -51,34 +52,34 @@ const UserProvider = ({ children }) => {
 
 
     const PullUserDetails = async () => {
-        const url = `http://localhost:3000/PullUserDetails?Username=${UserData.username}&usertoken=${usertoken}`;
+        const url = `${apiUrl}/PullUserDetails?Username=${UserData.username}&usertoken=${usertoken}`;
 
         const data = await axios.get(url)
         setData(data.data)
         return data.data
     }
     const UpdateUserDetails = async (user) => {
-        const url = `http://localhost:3000/UpdateUserDetails?&usertoken=${usertoken}`;
+        const url = `${apiUrl}/UpdateUserDetails?&usertoken=${usertoken}`;
         const status = await axios.put(url, user)
         return status
 
     }
     const AddSuervey = async (survey) => {
-        const url = `http://localhost:3000/PublishSuervey?&usertoken=${usertoken}`;
+        const url = `${apiUrl}/PublishSuervey?&usertoken=${usertoken}`;
         // eslint-disable-next-line
         const status = await axios.post(url, { survey, Data })
         PullUserSurveys()
 
     }
     const Vote = async (vote) => {
-        const url = `http://localhost:3000/Vote?&usertoken=${usertoken}`;
+        const url = `${apiUrl}/Vote?&usertoken=${usertoken}`;
         const status = await axios.put(url, vote)
         PullAllSurveys()
         return status
 
     }
     const DeletTargetSurvey = async (id) => {
-        const url = `http://localhost:3000/DeletTargetSurvey?&usertoken=${usertoken}&&_id=${id}&&Username=${UserData.username}`;
+        const url = `${apiUrl}/DeletTargetSurvey?&usertoken=${usertoken}&&_id=${id}&&Username=${UserData.username}`;
         const status = await axios.delete(url)
         if (status.status === 200) {
             setOwnServeys(status.data.surveys)
