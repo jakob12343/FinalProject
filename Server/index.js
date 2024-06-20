@@ -1,6 +1,5 @@
 // requires
 const express = require('express');
-const path = require('path');
 const cors = require('cors');
 const Get = require('./Controllers/Read');
 const Create = require('./Controllers/Create');
@@ -12,8 +11,9 @@ require('dotenv').config();
 
 const app = express();
 
+// CORS options to allow any origin
 const corsOptions = {
-  origin: 'https://final-project-client-smoky.vercel.app', // Your frontend URL
+  origin: '*', // Allow any origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Allow credentials if needed
   optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -22,11 +22,12 @@ const corsOptions = {
 // Use CORS with options
 app.use(cors(corsOptions));
 
-// Manually add CORS headers
+// Middleware to add headers manually to allow any origin
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://final-project-client-smoky.vercel.app');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  console.log('CORS headers set for', req.path);
   next();
 });
 
