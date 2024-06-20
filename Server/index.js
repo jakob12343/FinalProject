@@ -1,6 +1,7 @@
 // requires
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const Get = require('./Controllers/Read');
 const Create = require('./Controllers/Create');
 const Delete = require('./Controllers/Delete');
@@ -8,28 +9,26 @@ const Update = require('./Controllers/Update');
 const Middlewares = require('./Controllers/MiddleWares');
 const DataBase = require('./DAL/DB');
 require('dotenv').config();
+
+const app = express();
+
 const corsOptions = {
-  origin: 'https://final-project-client-smoky.vercel.app/', // Your frontend URL
+  origin: 'https://final-project-client-smoky.vercel.app', // Your frontend URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Allow credentials if needed
   optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
+// Use CORS with options
 app.use(cors(corsOptions));
-
-const port = process.env.PORT || 3000;
-const app = express();
 
 // middlewares
 app.use(express.json());
-app.use(cors());
 
 // activate DB
 DataBase();
 
-
-
-//////////////// CRUD////////////////
+// CRUD Operations
 // Posts
 app.post('/Register', (req, res) => { Create.Register(req, res); });
 app.post('/PublishSuervey', (req, res) => { Create.PublishSuervey(req, res); });
@@ -44,16 +43,16 @@ app.get('/PullUserSurveys', (req, res) => { Get.PullUserSurveys(req, res); });
 app.get('/PullOldUserSurveys', (req, res) => { Get.PullOldUserSurveys(req, res); });
 app.get('/PullAllSurveys', (req, res) => { Get.PullAllSurveys(req, res); });
 app.post('/GetSurveys', (req, res) => { Create.GetSurveys(req, res); });
-app.get('/ReadPublicSurveys', (req,res)=>{Get.ReadPublicSurveys(req,res)})
+app.get('/ReadPublicSurveys', (req,res)=>{Get.ReadPublicSurveys(req,res)});
 // Updates
 app.put('/UpdateUserDetails', (req, res) => { Update.UpdateUserDetails(req, res); });
 app.put('/Vote', (req, res) => { Update.Vote(req, res); });
 app.put('/EditPasword', (req, res) => { Update.EditPasword(req, res); });
 // Deletes
 app.delete('/DeletTargetSurvey', (req, res) => { Delete.DeleteSurvey(req, res); });
-app.get('/Check', (req,res)=>{res.status(200).json({messege: "this is check from vercel"})})
+app.get('/Check', (req,res)=>{res.status(200).json({messege: "this is check from vercel"})});
 
-
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
 });
