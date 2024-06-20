@@ -22,6 +22,17 @@ const corsOptions = {
 // Use CORS with options
 app.use(cors(corsOptions));
 
+// Manually add CORS headers
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://final-project-client-smoky.vercel.app');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  next();
+});
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
+
 // middlewares
 app.use(express.json());
 
@@ -43,14 +54,14 @@ app.get('/PullUserSurveys', (req, res) => { Get.PullUserSurveys(req, res); });
 app.get('/PullOldUserSurveys', (req, res) => { Get.PullOldUserSurveys(req, res); });
 app.get('/PullAllSurveys', (req, res) => { Get.PullAllSurveys(req, res); });
 app.post('/GetSurveys', (req, res) => { Create.GetSurveys(req, res); });
-app.get('/ReadPublicSurveys', (req,res)=>{Get.ReadPublicSurveys(req,res)});
+app.get('/ReadPublicSurveys', (req, res) => { Get.ReadPublicSurveys(req, res); });
 // Updates
 app.put('/UpdateUserDetails', (req, res) => { Update.UpdateUserDetails(req, res); });
 app.put('/Vote', (req, res) => { Update.Vote(req, res); });
 app.put('/EditPasword', (req, res) => { Update.EditPasword(req, res); });
 // Deletes
 app.delete('/DeletTargetSurvey', (req, res) => { Delete.DeleteSurvey(req, res); });
-app.get('/Check', (req,res)=>{res.status(200).json({messege: "this is check from vercel"})});
+app.get('/Check', (req, res) => { res.status(200).json({ message: "this is check from vercel" }); });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
