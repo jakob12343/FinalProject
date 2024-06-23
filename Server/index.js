@@ -15,13 +15,10 @@ const app = express();
 
 // middlewares
 app.use(express.json());
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  console.log('CORS headers set for', req.path);
-  next();
-});
+app.use(cors());
+
+
+
 // activate DB
 DataBase();
 

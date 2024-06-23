@@ -1,5 +1,6 @@
 /* Surveys Component Styles */
 .surveys-accordion {
+    width: 90%; /* Use percentage for better responsiveness */
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px; /* Softer shadow for a subtler depth */
     border-radius: 10px; /* Smooth rounded corners for the entire accordion */
     overflow: hidden; /* Keeps the content within the borders */
@@ -23,7 +24,7 @@
 }
 
 .accordion-body {
-    padding: 20px; /* Ample padding for content separation */
+    padding: 15px 20px; /* Add padding for better spacing */
     line-height: 1.5; /* Balanced line spacing for readability */
     color: #495057; /* Darker text for better readability */
 }
@@ -40,16 +41,64 @@
 }
 
 /* Responsive adjustments for a seamless mobile experience */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .surveys-accordion {
-        margin: 10px; /* Less margin for tight mobile layouts */
+        width: 85%; /* Adjust width for larger tablets */
+        margin: 15px auto; /* Adjust margin for larger tablets */
     }
 
     .accordion-header {
-        padding: 12px 15px; /* Smaller padding for compact areas */
+        font-size: 1.1rem; /* Slightly smaller font size for larger tablets */
+        padding: 12px 18px; /* Adjust padding for larger tablets */
     }
 
     .accordion-body {
-        padding: 15px; /* Slightly reduced padding in the body */
+        padding: 12px 18px; /* Adjust padding in the body for larger tablets */
+    }
+}
+
+@media (max-width: 992px) {
+    .surveys-accordion {
+        width: 80%; /* Adjust width for smaller tablets */
+    }
+
+    .accordion-header {
+        font-size: 1rem; /* Smaller font size for smaller tablets */
+        padding: 10px 15px; /* Adjust padding for smaller tablets */
+    }
+
+    .accordion-body {
+        padding: 10px 15px; /* Adjust padding in the body for smaller tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .surveys-accordion {
+        width: 95%; /* Adjust width for mobile devices */
+        margin: 10px auto; /* Less margin for tight mobile layouts */
+    }
+
+    .accordion-header {
+        font-size: 1rem; /* Maintain font size for better readability */
+        padding: 10px 15px; /* Smaller padding for compact areas */
+    }
+
+    .accordion-body {
+        padding: 10px 15px; /* Slightly reduced padding in the body */
+    }
+}
+
+@media (max-width: 576px) {
+    .surveys-accordion {
+        width: 100%; /* Full width for very small devices */
+    }
+
+    .accordion-header {
+        font-size: 0.9rem; /* Smaller font size for very small devices */
+        padding: 8px 12px; /* Adjust padding for very small devices */
+    }
+
+    .accordion-body {
+        padding: 8px 12px; /* Further reduced padding in the body */
     }
 }

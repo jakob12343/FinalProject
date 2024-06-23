@@ -9,6 +9,7 @@
   display: flex; /* Ensures navbar contents are flexibly aligned */
   align-items: center; /* Vertically centers navbar contents */
   padding: 0.5rem 1rem; /* Adequate padding for spacing */
+  margin-bottom: 2px;
 }
 
 .image {

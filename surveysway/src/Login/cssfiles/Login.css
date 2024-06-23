@@ -2,9 +2,6 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 91vh;
     justify-content: center;
-
-    background: rgb(187,195,214);
-    background: linear-gradient(85deg, rgba(187,195,214,0.07886904761904767) 24%, rgba(0,119,181,0.4542191876750701) 93%);
+padding: 15px;
 }

@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from 'react';
 import './CssFiles/PublishSurvey.css';
 import { Form } from 'react-bootstrap';
@@ -59,7 +56,7 @@ const PublishSurvey = () => {
     return skipped.has(step);
   };
   const handleNext = (e) => {
-    
+
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -134,11 +131,11 @@ const PublishSurvey = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (survey.title===''||survey.category=== 'Select Category'||!survey.duration) {
+    if (survey.title === '' || survey.category === 'Select Category' || !survey.duration) {
       setErrorMessage("Required details are missing. Please ensure you've filled out all required fields.");
-      setSnackOpen(true);      
+      setSnackOpen(true);
     }
-    else{
+    else {
       let choices = []
       selectedAgeRanges.map(choice => choices.push(choice))
       selectedGenders.map(choice => choices.push(choice))
@@ -161,7 +158,7 @@ const PublishSurvey = () => {
       })
       setActiveStep(0)
     }
-   
+
     // Here, implement your logic to handle the survey data, such as sending it to a backend server
   };
   const getStepContent = (step) => {
@@ -335,7 +332,7 @@ const PublishSurvey = () => {
 
   return (
     <div className='container-Survey'>
-        <Snackbar
+      <Snackbar
         open={snackOpen}
         anchorOrigin={{ vertical: 'top', horizontal: "center" }}
 
@@ -377,7 +374,7 @@ const PublishSurvey = () => {
           </Box>
         </form>
       </Box>
-      
+
     </div>
   );
 };

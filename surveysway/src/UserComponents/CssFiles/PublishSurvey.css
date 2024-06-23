@@ -1,11 +1,12 @@
 /* PublishSurvey.css */
 .container-Survey {
-    max-width: 800px; /* or your preferred max width */
+    max-width: 90%; /* Use percentage for better responsiveness */
     margin: auto;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     background-color: #fff;
+    max-width: 1200px; /* Ensure it doesn't get too wide on large screens */
 }
 
 .form-survey {
@@ -30,11 +31,13 @@
 .category-item {
     flex: 1 1 100px; /* Adjust minimum width as needed */
 }
+
 .form-user-selction {
-    border-bottom: solid black 1px;
+    border-bottom: 1px solid black;
     background-color: #eee;
     margin-bottom: 3px;
 }
+
 .step-content {
     display: flex;
     flex-direction: column;
@@ -89,4 +92,66 @@
     font-size: 16px;
 }
 
-/* Make adjustments as necessary to fit the overall design of your application */
+/* Responsive adjustments for a seamless mobile experience */
+@media (max-width: 1200px) {
+    .container-Survey {
+        width: 85%; /* Adjust width for larger tablets */
+        padding: 15px; /* Adjust padding for larger tablets */
+    }
+
+    .stepper .step {
+        width: 35px;
+        height: 35px;
+        font-size: 14px; /* Adjust font size for larger tablets */
+    }
+}
+
+@media (max-width: 992px) {
+    .container-Survey {
+        width: 80%; /* Adjust width for smaller tablets */
+    }
+
+    .survey-input, .form-select, .form-check-input {
+        padding: 0.5rem; /* Adjust padding for smaller tablets */
+    }
+
+    .stepper .step {
+        width: 30px;
+        height: 30px;
+        font-size: 14px; /* Adjust font size for smaller tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .container-Survey {
+        width: 95%; /* Adjust width for mobile devices */
+        margin: 10px auto; /* Less margin for tight mobile layouts */
+        padding: 15px; /* Adjust padding for mobile devices */
+    }
+
+    .survey-input, .form-select, .form-check-input {
+        padding: 0.5rem; /* Adjust padding for mobile devices */
+    }
+
+    .stepper .step {
+        width: 30px;
+        height: 30px;
+        font-size: 12px; /* Adjust font size for mobile devices */
+    }
+}
+
+@media (max-width: 576px) {
+    .container-Survey {
+        width: 100%; /* Full width for very small devices */
+    }
+
+    .survey-input, .form-select, .form-check-input {
+        padding: 0.5rem; /* Adjust padding for very small devices */
+    }
+
+    .stepper .step {
+        width: 25px;
+        height: 25px;
+        font-size: 12px; /* Adjust font size for very small devices */
+    }
+}
