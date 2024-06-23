@@ -72,6 +72,15 @@ const PullOldUserSurveys = async (req, res) => {
     }
     else res.status(409).json({ message: "invalid user token" })
 }
+const ReadPublicSurveys=async(req,res)=>{
+try {
+    const surveys = await Survey.find({  isPublic: true })
+    res.status(200).json(surveys)
 
+} catch (error) {
+    res.status(404).json({message: "error fatching surveys"})
+}    
 
-module.exports = {  PullUserDetails, ForgotPassword, PullUserSurveys, PullOldUserSurveys, PullAllSurveys }
+}
+
+module.exports = {  PullUserDetails, ForgotPassword, PullUserSurveys, PullOldUserSurveys, PullAllSurveys,ReadPublicSurveys }

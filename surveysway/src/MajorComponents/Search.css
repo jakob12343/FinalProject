@@ -1,0 +1,108 @@
+/* Container for the whole search component */
+.search-container {
+    width: 90%; /* Use percentage for better responsiveness */
+    max-width: 1200px; /* Ensure it doesn't get too wide on large screens */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Styling for the TextField component */
+.search-container .MuiTextField-root {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Styling for the FormGroup container */
+.search-container .MuiFormGroup-root {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Styling for individual FormControlLabel elements */
+.search-container .MuiFormControlLabel-root {
+    margin: 5px 0;
+}
+
+/* Styling for the Submit Button */
+.search-container .MuiButton-root {
+    width: 100%;
+    padding: 10px;
+    background-color: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-container .MuiButton-root:hover {
+    background-color: #155a9c;
+}
+
+/* Container for displaying survey results */
+.survey-results {
+    margin-top: 20px;
+}
+
+/* Styling for individual survey items */
+.survey-results .survey-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+/* Styling for the "No surveys found" message */
+.survey-results .no-surveys {
+    color: #999;
+    text-align: center;
+}
+
+/* Additional styling for survey item details */
+.survey-item p {
+    margin: 5px 0;
+    color: #333;
+}
+
+.survey-item p.title {
+    font-weight: bold;
+    color: #1976d2;
+}
+
+/* Responsive adjustments for a seamless mobile experience */
+@media (max-width: 1200px) {
+    .search-container {
+        width: 85%; /* Adjust width for larger tablets */
+        padding: 15px; /* Adjust padding for larger tablets */
+    }
+}
+
+@media (max-width: 992px) {
+    .search-container {
+        width: 80%; /* Adjust width for smaller tablets */
+        padding: 15px; /* Adjust padding for smaller tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        width: 95%; /* Adjust width for mobile devices */
+        margin: 10px auto; /* Less margin for tight mobile layouts */
+        padding: 15px; /* Adjust padding for mobile devices */
+    }
+}
+
+@media (max-width: 576px) {
+    .search-container {
+        width: 100%; /* Full width for very small devices */
+        padding: 10px; /* Adjust padding for very small devices */
+    }
+
+    .survey-results .survey-item {
+        padding: 8px; /* Adjust padding for survey items on very small devices */
+    }
+}

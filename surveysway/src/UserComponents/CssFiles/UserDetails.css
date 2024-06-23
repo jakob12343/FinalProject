@@ -1,34 +1,39 @@
 /* Card Styles */
-.User{
-    width: 45vw;
+.User {
+    width: 45vw; /* Change from vw to percentage for better responsiveness */
+    max-width: 1200px; /* Ensure it doesn't get too wide on large screens */
+    margin: auto;
     display: flex;
     flex-direction: row; /* Ensure items are laid out in a row */
     justify-content: center;
     align-items: center; /* Stretch items to fill the container height */
     background-size: cover;
     background-position: center;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;    margin-top: 3px;
+    background-color: white;
+    margin-top: 3px;
     z-index: 1;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
+
 .User-Card {
     border: none !important;
     display: flex;
     margin-top: 3px;
     z-index: 1;
     margin: 20px auto; /* Center the card with some margin around */
-    width: 30vw; /* Responsive width */
+    width: 90%; /* Responsive width */
     max-width: 800px; /* Max width to prevent it from becoming too wide */
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center; /* Center items on smaller screens */
 }
 
 .Img {
     max-height: fit-content;
-
-}
-.Img, .User-Card{
-    flex: 1; /* Ensure form and image each take half of the container's width */
-    max-width: 50%; /* Limit maximum width to 50% */
+    flex: 1; /* Ensure image and form each take half of the container's width */
+    max-width: 30%; /* Limit maximum width to 100% */
     object-fit: cover; /* Ensure images cover the area without losing aspect ratio */
 }
+
 /* Input field styles */
 .User-input {
     outline: none;
@@ -59,12 +64,26 @@
 }
 
 /* Responsive adjustments */
+@media (max-width: 1200px) {
+    .User {
+        flex-direction: column; /* Stack items vertically on medium screens */
+    }
+    
+    .User-Card {
+        width: 70%; /* Adjust card width */
+    }
+}
+
 @media (max-width: 768px) {
-    .Card {
-        width: 90vw; /* More suitable for smaller screens */
+    .User {
+        width: 95%; /* More suitable for smaller screens */
     }
 
-    .form-input, .Button {
+    .User-Card {
+        width: 90%; /* More suitable for smaller screens */
+    }
+
+    .User-input, .User-Button {
         padding: 8px 20px; /* Adjust padding for smaller devices */
     }
 }

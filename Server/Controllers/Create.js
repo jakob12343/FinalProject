@@ -113,7 +113,6 @@ const SignIn = async (req, res) => {
 
     try {
         const isSucsses = await User.findOne({ username: req.body.username })
-
         if (isSucsses) {
             const match = await Validations.CheckPassword({ pass1: isSucsses.password, pass2: req.body.password })
             if (match) {
@@ -124,7 +123,7 @@ const SignIn = async (req, res) => {
                 const OldSurveys = await NonActive.find({ author: isSucsses._id })
                 const Allsurveys = await Survey.find({ author: { $ne: isSucsses._id }, isPublic: true })
                 const voteHistory = await Survey.find({ 'responses.user': isSucsses._id });
-                const results = await Calcs.CalcCwtwgories(OldSurveys, surveys);
+                const results = await Calcs.CalcCwtwgories( surveys);
                 const exclusiveSurveys =await Calcs.PullSurveysByProfile(isSucsses)
                 const SharedObject =
                 {
@@ -159,7 +158,7 @@ const SignIn = async (req, res) => {
     }
 }
 const PublishSuervey = async (req, res) => {
-    const { survey, Data } = req.body
+    const { survey, Data } = req.body;
     const newSurvey = {
         author: Data._id,
         authorUsername: Data.username,
@@ -170,9 +169,11 @@ const PublishSuervey = async (req, res) => {
         isPublic: survey.isPublic,
         targetAudience: survey.targetAudience,
         purpose: survey.purpose,
-
     }
-    const IsSucsses = await Survey.create(newSurvey)
-    res.status(200).json({ status: " ok" })
+    const IsSucsses = await Survey.create(newSurvey);
+    res.status(200).json({ status: " ok" });
 }
-module.exports = { Register, GetguestToken, SignIn, PublishSuervey, GetNewToken }
+const GetSurveys=async(req,res)=>{
+    console.log(req.body);
+}
+module.exports = { Register, GetguestToken, SignIn, PublishSuervey, GetNewToken,GetSurveys }

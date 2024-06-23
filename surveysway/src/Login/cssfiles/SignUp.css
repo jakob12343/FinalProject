@@ -2,7 +2,12 @@
     display: flex;
     justify-content: center;
 }
-
+.error-message{
+  background-color: rgb(246, 202, 202);
+  text-transform: capitalize;
+  border-radius: 16px;
+  padding: 16px;
+}
 .signup-container {
     width: 35vw;
     max-width: 500px; /* Prevents the form from becoming too wide on large screens */

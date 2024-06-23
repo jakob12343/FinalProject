@@ -22,6 +22,7 @@ const NonActive = () => {
         <div className='Non-Active-Container'>
                                         
             <Card.Title className='Non-Active-Card-Title'>Survays You Voted</Card.Title>
+            {historyVoetes.length===0&& <h3>You Didn't Vote To Any Survay Yet </h3>}
 
             <div className='non-active-section'>
             {historyVoetes.map((survey, index) => (
@@ -31,7 +32,7 @@ const NonActive = () => {
             <Card.Title className='Non-Active-Card-Title'>Your Old Surveys</Card.Title>
 
             <div className='non-active-section'>
-                {OldSrveys.length===0&& <h3>You Have Not Posted Any Survey </h3>}
+                {OldSrveys.length===0&& <h3>You Don't Have Any Survey History Yet </h3>}
 
             {OldSrveys.map((survey, index) => (
                 <div key={index}>
