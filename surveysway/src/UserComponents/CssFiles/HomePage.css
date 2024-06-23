@@ -2,7 +2,9 @@
     color: #fff !important;
     background-color: #0077b5 !important;
 }
-
+.size{
+    width: 98.6vw;
+}
 .nav-pills .nav-link {
     width: 100%; /* Ensure full width for better tap targets */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

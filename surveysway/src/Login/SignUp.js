@@ -7,7 +7,7 @@ const SignUp = () => {
     const { Register } = useContext(MainContext);
     const Navigate = useNavigate();
     const [usernameError, setUsernameError] = useState('');
-    const [passwordError, setPasswordError] = useState('')
+    const [passwordError, setPasswordError] = useState('');
 
     const [formData, setFormData] = useState({
         username: '',
@@ -122,9 +122,9 @@ const SignUp = () => {
                         />
                         {/* Display username error if it exists */}
                         {usernameError && (
-                            <Form.Control.Feedback className='error-message' type="invalid">
+                            <div className='error-message' type="invalid">
                                 {usernameError}
-                            </Form.Control.Feedback>
+                            </div>
                         )}
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -132,20 +132,18 @@ const SignUp = () => {
                         <br />
                         <input
                             className='sign-input '
-
                             type="text"
                             placeholder="Password"
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
                             isInvalid={!!passwordError} // Highlight input if there's an error
-
                             required
                         />
                         {passwordError && (
-                            <Form.Control.Feedback className='error-message' type="invalid">
+                            <div className='error-message' type="invalid">
                                 {passwordError}
-                            </Form.Control.Feedback>
+                            </div>
                         )}
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">

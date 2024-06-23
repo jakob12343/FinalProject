@@ -17,7 +17,7 @@ const Homepage = () => {
  
  
   return (
-    <div> <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+    <div className='size'> <Tab.Container id="left-tabs-example" defaultActiveKey="first">
     <Row>
       <Col sm={3}>
 

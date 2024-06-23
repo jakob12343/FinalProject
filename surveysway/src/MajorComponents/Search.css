@@ -1,6 +1,7 @@
 /* Container for the whole search component */
 .search-container {
-    max-width: 600px;
+    width: 90%; /* Use percentage for better responsiveness */
+    max-width: 1200px; /* Ensure it doesn't get too wide on large screens */
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -70,4 +71,38 @@
 .survey-item p.title {
     font-weight: bold;
     color: #1976d2;
+}
+
+/* Responsive adjustments for a seamless mobile experience */
+@media (max-width: 1200px) {
+    .search-container {
+        width: 85%; /* Adjust width for larger tablets */
+        padding: 15px; /* Adjust padding for larger tablets */
+    }
+}
+
+@media (max-width: 992px) {
+    .search-container {
+        width: 80%; /* Adjust width for smaller tablets */
+        padding: 15px; /* Adjust padding for smaller tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        width: 95%; /* Adjust width for mobile devices */
+        margin: 10px auto; /* Less margin for tight mobile layouts */
+        padding: 15px; /* Adjust padding for mobile devices */
+    }
+}
+
+@media (max-width: 576px) {
+    .search-container {
+        width: 100%; /* Full width for very small devices */
+        padding: 10px; /* Adjust padding for very small devices */
+    }
+
+    .survey-results .survey-item {
+        padding: 8px; /* Adjust padding for survey items on very small devices */
+    }
 }
