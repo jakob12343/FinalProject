@@ -7,7 +7,7 @@ const Delete = require('./Controllers/Delete');
 const Update = require('./Controllers/Update');
 const Middlewares = require('./Controllers/MiddleWares');
 const DataBase = require('./DAL/DB');
-const cors = require('cors');
+const { allowCors } = require('./CorsHeaders');
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
@@ -15,14 +15,12 @@ const app = express();
 
 // middlewares
 app.use(express.json());
-app.use(cors());
 
-
+// Apply CORS middleware globally
+app.use(allowCors((req, res, next) => next()));
 
 // activate DB
 DataBase();
-
-
 
 //////////////// CRUD////////////////
 // Posts
@@ -39,15 +37,14 @@ app.get('/PullUserSurveys', (req, res) => { Get.PullUserSurveys(req, res); });
 app.get('/PullOldUserSurveys', (req, res) => { Get.PullOldUserSurveys(req, res); });
 app.get('/PullAllSurveys', (req, res) => { Get.PullAllSurveys(req, res); });
 app.post('/GetSurveys', (req, res) => { Create.GetSurveys(req, res); });
-app.get('/ReadPublicSurveys', (req,res)=>{Get.ReadPublicSurveys(req,res)})
+app.get('/ReadPublicSurveys', (req,res) => { Get.ReadPublicSurveys(req,res); });
 // Updates
 app.put('/UpdateUserDetails', (req, res) => { Update.UpdateUserDetails(req, res); });
 app.put('/Vote', (req, res) => { Update.Vote(req, res); });
 app.put('/EditPasword', (req, res) => { Update.EditPasword(req, res); });
 // Deletes
 app.delete('/DeletTargetSurvey', (req, res) => { Delete.DeleteSurvey(req, res); });
-app.get('/Check', (req,res)=>{res.status(200).json({messege: "this is check from vercel"})})
-
+app.get('/Check', (req,res) => { res.status(200).json({ messege: "this is check from vercel" }) });
 
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
