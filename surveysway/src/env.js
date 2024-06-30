@@ -1,3 +1,3 @@
 
-const apiUrl= 'http://localhost:3000'
+const apiUrl= 'https://final-project-server-pi-six.vercel.app'
 export { apiUrl };
