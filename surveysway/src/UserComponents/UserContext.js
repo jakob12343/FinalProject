@@ -28,7 +28,6 @@ const UserProvider = ({ children }) => {
     }, [Surveys]);
 
     const PullUserSurveys = async () => {
-
         const url = `${apiUrl}/PullUserSurveys?Username=${UserData.username}&usertoken=${usertoken}`;
         const data = await axios.get(url)
         setOwnServeys(data.data)
@@ -36,7 +35,7 @@ const UserProvider = ({ children }) => {
 
     }
     const PullAllSurveys = async () => {
-        const url = `http://localhost:3000/PullAllSurveys?Username=${UserData.username}&usertoken=${usertoken}`;
+        const url = `${apiUrl}/PullAllSurveys?Username=${UserData.username}&usertoken=${usertoken}`;
         const data = await axios.get(url)
         //console.log(data.data);
         setSurveys(data.data)
