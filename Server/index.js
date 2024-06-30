@@ -19,6 +19,7 @@ app.use(express.json());
 // Apply CORS middleware globally
 app.use(allowCors((req, res, next) => next()));
 
+
 // activate DB
 DataBase();
 
