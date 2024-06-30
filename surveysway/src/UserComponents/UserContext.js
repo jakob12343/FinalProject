@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { MainContext } from "../MainContext";
 import axios from "axios";
-import { apiUrl } from "../env";
 
 const UserContext = createContext()
 const UserProvider = ({ children }) => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     const { usertoken, UserData, Alldetails } = useContext(MainContext)
     const [Data, setData] = useState({})
     const [OwnServeys, setOwnServeys] = useState([]);

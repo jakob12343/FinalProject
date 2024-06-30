@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
-import { apiUrl } from '../env';
 const GuestContext = createContext();
 
 const GuestProvider = ({ children }) => {
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const [guest, setGuest] = useState([]);
 useEffect(() => {
