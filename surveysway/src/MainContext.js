@@ -1,10 +1,11 @@
 import { createContext, useEffect, useState } from "react";
 import axios from 'axios';
 import { ValidateToken } from "./Validations/ValidateToken";
-import { apiUrl } from "./env";
 const MainContext = createContext();
 
 const MainProvider = ({ children }) => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     const [usertoken, setusertoken] = useState("1234");
     const [UserMode, setUserMode] = useState("")
     const [UserData, setUserData] = useState({})
