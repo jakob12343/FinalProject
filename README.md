@@ -212,17 +212,6 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature-branch`).
 5. Open a pull request.
 
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Personal Addendum
-
-Thank you for taking the time to explore SurveySway. This project has been a labor of love, combining my passion for creating user-friendly applications with the challenge of solving real-world problems. 
-
-### Behind the Project
-
-Developing SurveySway has been a journey filled with learning, creativity, and collaboration. The primary goal was to create a platform that not only makes survey creation and management easy but also ensures data accuracy and user satisfaction. Every feature has been thoughtfully designed with the end-user in mind, and I'm incredibly proud of what has been achieved.
 
 ### Future Aspirations
 
