@@ -196,7 +196,7 @@ const PublishSurvey = () => {
             />
           </div>
           <div className='form-survey'>
-            <Form.Label className='form-label'>Duration (YYYY-MM-DD):</Form.Label>
+            <Form.Label className='form-label'>Until *</Form.Label>
             <input
               className='survey-input'
               name="duration"

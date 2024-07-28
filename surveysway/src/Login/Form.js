@@ -123,7 +123,7 @@ function Formexampl() {
                     />
                 )}
                 <div className='buttons'>
-                    <button className='form-button btn-1' onClick={Submit} >Submit</button>
+                    <button className='form-button btn-1' onClick={Submit} >Login</button>
                     <button className='form-button' onClick={SignUp} >Sign Up</button>
                 </div>
                 <a id='check' className='mr-1' href="/" onClick={check}>Login as guest</a>

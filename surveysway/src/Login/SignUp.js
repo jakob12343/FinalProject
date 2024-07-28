@@ -108,7 +108,7 @@ const SignUp = () => {
                 <h1 className='signup-title'>Sign Up</h1>
                 <Form className='signup-form' onSubmit={handleSubmit}>
                     <Form.Group className=" form-field" controlId="formBasicUsername">
-                        <Form.Label className='form-label'>Username</Form.Label>
+                        <Form.Label className='form-label'>Username *</Form.Label>
                         <br />
                         <input
                             className='sign-input'
@@ -128,7 +128,7 @@ const SignUp = () => {
                         )}
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Password *</Form.Label>
                         <br />
                         <input
                             className='sign-input '
@@ -147,7 +147,7 @@ const SignUp = () => {
                         )}
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label>Email address *</Form.Label>
                         <br />
                         <input
                             className='sign-input'
@@ -160,7 +160,7 @@ const SignUp = () => {
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicBirthDate">
-                        <Form.Label>Birth Date</Form.Label>
+                        <Form.Label>Birth Date *</Form.Label>
                         <br />
                         <input
                             className='sign-input '
@@ -172,7 +172,7 @@ const SignUp = () => {
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPhone">
-                        <Form.Label>Phone</Form.Label>
+                        <Form.Label>Phone *</Form.Label>
                         <br />
                         <input
                             className='sign-input'
@@ -215,7 +215,7 @@ const SignUp = () => {
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicAddress">
-                        <Form.Label>Address</Form.Label>
+                        <Form.Label>Address </Form.Label>
                         <br />
                         <input
                             className='sign-input'

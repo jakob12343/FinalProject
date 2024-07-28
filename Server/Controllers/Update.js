@@ -20,6 +20,7 @@ const EditPasword = async (req, res) => {
 
 }
 const Vote = async (req, res) => {
+    console.log(req.body._id);
     const IsExist = await Validations.CheckUser(req.query);
     if (IsExist) {
         const data = await Survey.findByIdAndUpdate(req.body._id, req.body);
