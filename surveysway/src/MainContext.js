@@ -50,14 +50,11 @@ const MainProvider = ({ children }) => {
             setUserMode(response.data.mode)
             setUserData(newuser)
             setAlldetails(response.data.userdetails)
-
         } catch (error) {
             console.error("Error fetching user token:", error.response.data.message);
             if (error.response && error.response.status === 409) {
                 return true
             }
-
-
         }
         
     }

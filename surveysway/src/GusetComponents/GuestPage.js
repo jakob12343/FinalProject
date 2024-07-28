@@ -6,7 +6,7 @@ const GuestPage = () => {
   const { guest } = useContext(GuestContext)
 
   return (
-    <div>
+    <div className='OtherSurveys-survey-container'>
       {guest.map((survey, index) => (
         <Votes index={index} survey={survey} key={index} />
       ))} 

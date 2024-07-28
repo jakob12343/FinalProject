@@ -15,7 +15,9 @@ const UserProvider = ({ children }) => {
     const [historyVoetes, setHistoryVoetes]=useState([]);
     const [SurveysByprofile, setSurveysByprofile]=useState([]);
     useEffect(() => {
-        setData(Alldetails.user)
+        setData(Alldetails.user?? {_id: '669d48345455a61707752d2b',
+        username: 'Guest',
+        })
         setOldSrveys(Alldetails.OldSurveys ?? []);
         setSurveys(Alldetails.Allsurveys ?? []);
         setOwnServeys(Alldetails.surveys ?? []);
@@ -36,10 +38,14 @@ const UserProvider = ({ children }) => {
 
     }
     const PullAllSurveys = async () => {
+        if (Data.username!=="Guest") {
+            
+        
         const url = `${apiUrl}/PullAllSurveys?Username=${UserData.username}&usertoken=${usertoken}`;
         const data = await axios.get(url)
         //console.log(data.data);
         setSurveys(data.data)
+        }
     }
 
     const PullOldUserSurveys = async () => {
@@ -72,6 +78,7 @@ const UserProvider = ({ children }) => {
 
     }
     const Vote = async (vote) => {
+        console.log(vote);
         const url = `${apiUrl}/Vote?&usertoken=${usertoken}`;
         const status = await axios.put(url, vote)
         PullAllSurveys()

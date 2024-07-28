@@ -12,6 +12,7 @@ const Votes = ({ survey }) => {
     const [hasVoted, setHasVoted] = useState(false); // Track if the user has voted
 const [showBars,setshowBars]=useState(false)
     const handleVote = (optionIndex) => {
+        console.log(Data);
         const newVote = {
             option: optionIndex,
             user: Data._id,
@@ -34,11 +35,22 @@ const [showBars,setshowBars]=useState(false)
     };
 
     const submitVote = () => {
-        const array = survey.responses.filter((item) => item.user !== Data._id);
-        array.push(vote);
-        survey.responses = array;
-        Vote(survey);
-        setshowBars(true)
+        if (Data.username==='Guest') {
+            console.log(vote);
+            const array = survey.responses;
+            array.push(vote);
+            survey.responses = array;
+            Vote(survey);
+            setshowBars(true)
+        }
+        else {
+            const array = survey.responses.filter((item) => item.user !== Data._id);
+            array.push(vote);
+            survey.responses = array;
+            Vote(survey);
+            setshowBars(true)
+        }
+        
     };
 
     const drawAnswer = (survey, item, i) => {
