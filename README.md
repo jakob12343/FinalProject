@@ -215,10 +215,6 @@ If you have any questions, suggestions, or just want to connect, feel free to re
 
 A special thank you to everyone who has supported me throughout this project. From mentors and peers to the open-source community, your guidance and resources have been instrumental in bringing SurveySway to life.
 
----
-
-Thank you for being a part of this journey. Together, we can make SurveySway a leading platform for survey creation and analysis.
-
 Warm regards,
 
 Jakob
