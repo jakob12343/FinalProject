@@ -12,9 +12,6 @@ SurveySway is a comprehensive platform for creating, managing, and analyzing sur
 - [API Endpoints](#api-endpoints)
 - [Database Schema](#database-schema)
 - [Future Enhancements](#future-enhancements)
-- [Contributing](#contributing)
-- [License](#license)
-- [Personal Addendum](#personal-addendum)
 
 ## Project Overview
 
